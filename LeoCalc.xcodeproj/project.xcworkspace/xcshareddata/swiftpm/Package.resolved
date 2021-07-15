@@ -1,0 +1,16 @@
+{
+  "object": {
+    "pins": [
+      {
+        "package": "ViewModelKit",
+        "repositoryURL": "https://github.com/pomozoff/ViewModelKit.git",
+        "state": {
+          "branch": "main",
+          "revision": "94d1e876781a9821be049c55d4974a4d744ce54d",
+          "version": null
+        }
+      }
+    ]
+  },
+  "version": 1
+}

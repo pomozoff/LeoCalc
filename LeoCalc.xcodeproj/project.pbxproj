@@ -1,0 +1,641 @@
+// !$*UTF8*$!
+{
+	archiveVersion = 1;
+	classes = {
+	};
+	objectVersion = 52;
+	objects = {
+
+/* Begin PBXBuildFile section */
+		265F9FD526A08F03005E585F /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 265F9FD426A08F03005E585F /* AppDelegate.swift */; };
+		265F9FD726A08F03005E585F /* SceneDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 265F9FD626A08F03005E585F /* SceneDelegate.swift */; };
+		265F9FD926A08F03005E585F /* MainViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 265F9FD826A08F03005E585F /* MainViewController.swift */; };
+		265F9FDE26A08F06005E585F /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 265F9FDD26A08F06005E585F /* Assets.xcassets */; };
+		265F9FE126A08F06005E585F /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 265F9FDF26A08F06005E585F /* LaunchScreen.storyboard */; };
+		265F9FEC26A08F06005E585F /* LeoCalcTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 265F9FEB26A08F06005E585F /* LeoCalcTests.swift */; };
+		265F9FF726A08F06005E585F /* LeoCalcUITests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 265F9FF626A08F06005E585F /* LeoCalcUITests.swift */; };
+		265FA00826A0979D005E585F /* MainViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 265FA00726A0979D005E585F /* MainViewModel.swift */; };
+		265FA00B26A09B2B005E585F /* ViewModelKit in Frameworks */ = {isa = PBXBuildFile; productRef = 265FA00A26A09B2B005E585F /* ViewModelKit */; };
+/* End PBXBuildFile section */
+
+/* Begin PBXContainerItemProxy section */
+		265F9FE826A08F06005E585F /* PBXContainerItemProxy */ = {
+			isa = PBXContainerItemProxy;
+			containerPortal = 265F9FC926A08F03005E585F /* Project object */;
+			proxyType = 1;
+			remoteGlobalIDString = 265F9FD026A08F03005E585F;
+			remoteInfo = LeoCalc;
+		};
+		265F9FF326A08F06005E585F /* PBXContainerItemProxy */ = {
+			isa = PBXContainerItemProxy;
+			containerPortal = 265F9FC926A08F03005E585F /* Project object */;
+			proxyType = 1;
+			remoteGlobalIDString = 265F9FD026A08F03005E585F;
+			remoteInfo = LeoCalc;
+		};
+/* End PBXContainerItemProxy section */
+
+/* Begin PBXFileReference section */
+		265F9FD126A08F03005E585F /* LeoCalc.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = LeoCalc.app; sourceTree = BUILT_PRODUCTS_DIR; };
+		265F9FD426A08F03005E585F /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
+		265F9FD626A08F03005E585F /* SceneDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SceneDelegate.swift; sourceTree = "<group>"; };
+		265F9FD826A08F03005E585F /* MainViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MainViewController.swift; sourceTree = "<group>"; };
+		265F9FDD26A08F06005E585F /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
+		265F9FE026A08F06005E585F /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
+		265F9FE226A08F06005E585F /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		265F9FE726A08F06005E585F /* LeoCalcTests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = LeoCalcTests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
+		265F9FEB26A08F06005E585F /* LeoCalcTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LeoCalcTests.swift; sourceTree = "<group>"; };
+		265F9FED26A08F06005E585F /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		265F9FF226A08F06005E585F /* LeoCalcUITests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = LeoCalcUITests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
+		265F9FF626A08F06005E585F /* LeoCalcUITests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LeoCalcUITests.swift; sourceTree = "<group>"; };
+		265F9FF826A08F06005E585F /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		265FA00726A0979D005E585F /* MainViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MainViewModel.swift; sourceTree = "<group>"; };
+/* End PBXFileReference section */
+
+/* Begin PBXFrameworksBuildPhase section */
+		265F9FCE26A08F03005E585F /* Frameworks */ = {
+			isa = PBXFrameworksBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				265FA00B26A09B2B005E585F /* ViewModelKit in Frameworks */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		265F9FE426A08F06005E585F /* Frameworks */ = {
+			isa = PBXFrameworksBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		265F9FEF26A08F06005E585F /* Frameworks */ = {
+			isa = PBXFrameworksBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXFrameworksBuildPhase section */
+
+/* Begin PBXGroup section */
+		265F9FC826A08F03005E585F = {
+			isa = PBXGroup;
+			children = (
+				265F9FD326A08F03005E585F /* LeoCalc */,
+				265F9FEA26A08F06005E585F /* LeoCalcTests */,
+				265F9FF526A08F06005E585F /* LeoCalcUITests */,
+				265F9FD226A08F03005E585F /* Products */,
+			);
+			sourceTree = "<group>";
+		};
+		265F9FD226A08F03005E585F /* Products */ = {
+			isa = PBXGroup;
+			children = (
+				265F9FD126A08F03005E585F /* LeoCalc.app */,
+				265F9FE726A08F06005E585F /* LeoCalcTests.xctest */,
+				265F9FF226A08F06005E585F /* LeoCalcUITests.xctest */,
+			);
+			name = Products;
+			sourceTree = "<group>";
+		};
+		265F9FD326A08F03005E585F /* LeoCalc */ = {
+			isa = PBXGroup;
+			children = (
+				265FA00626A095F7005E585F /* Main */,
+				265FA00526A08F7F005E585F /* Application */,
+				265FA00426A08F70005E585F /* Resources */,
+				265F9FE226A08F06005E585F /* Info.plist */,
+			);
+			path = LeoCalc;
+			sourceTree = "<group>";
+		};
+		265F9FEA26A08F06005E585F /* LeoCalcTests */ = {
+			isa = PBXGroup;
+			children = (
+				265F9FEB26A08F06005E585F /* LeoCalcTests.swift */,
+				265F9FED26A08F06005E585F /* Info.plist */,
+			);
+			path = LeoCalcTests;
+			sourceTree = "<group>";
+		};
+		265F9FF526A08F06005E585F /* LeoCalcUITests */ = {
+			isa = PBXGroup;
+			children = (
+				265F9FF626A08F06005E585F /* LeoCalcUITests.swift */,
+				265F9FF826A08F06005E585F /* Info.plist */,
+			);
+			path = LeoCalcUITests;
+			sourceTree = "<group>";
+		};
+		265FA00426A08F70005E585F /* Resources */ = {
+			isa = PBXGroup;
+			children = (
+				265F9FDD26A08F06005E585F /* Assets.xcassets */,
+				265F9FDF26A08F06005E585F /* LaunchScreen.storyboard */,
+			);
+			path = Resources;
+			sourceTree = "<group>";
+		};
+		265FA00526A08F7F005E585F /* Application */ = {
+			isa = PBXGroup;
+			children = (
+				265F9FD426A08F03005E585F /* AppDelegate.swift */,
+				265F9FD626A08F03005E585F /* SceneDelegate.swift */,
+			);
+			path = Application;
+			sourceTree = "<group>";
+		};
+		265FA00626A095F7005E585F /* Main */ = {
+			isa = PBXGroup;
+			children = (
+				265F9FD826A08F03005E585F /* MainViewController.swift */,
+				265FA00726A0979D005E585F /* MainViewModel.swift */,
+			);
+			path = Main;
+			sourceTree = "<group>";
+		};
+/* End PBXGroup section */
+
+/* Begin PBXNativeTarget section */
+		265F9FD026A08F03005E585F /* LeoCalc */ = {
+			isa = PBXNativeTarget;
+			buildConfigurationList = 265F9FFB26A08F06005E585F /* Build configuration list for PBXNativeTarget "LeoCalc" */;
+			buildPhases = (
+				265F9FCD26A08F03005E585F /* Sources */,
+				265F9FCE26A08F03005E585F /* Frameworks */,
+				265F9FCF26A08F03005E585F /* Resources */,
+			);
+			buildRules = (
+			);
+			dependencies = (
+			);
+			name = LeoCalc;
+			packageProductDependencies = (
+				265FA00A26A09B2B005E585F /* ViewModelKit */,
+			);
+			productName = LeoCalc;
+			productReference = 265F9FD126A08F03005E585F /* LeoCalc.app */;
+			productType = "com.apple.product-type.application";
+		};
+		265F9FE626A08F06005E585F /* LeoCalcTests */ = {
+			isa = PBXNativeTarget;
+			buildConfigurationList = 265F9FFE26A08F06005E585F /* Build configuration list for PBXNativeTarget "LeoCalcTests" */;
+			buildPhases = (
+				265F9FE326A08F06005E585F /* Sources */,
+				265F9FE426A08F06005E585F /* Frameworks */,
+				265F9FE526A08F06005E585F /* Resources */,
+			);
+			buildRules = (
+			);
+			dependencies = (
+				265F9FE926A08F06005E585F /* PBXTargetDependency */,
+			);
+			name = LeoCalcTests;
+			productName = LeoCalcTests;
+			productReference = 265F9FE726A08F06005E585F /* LeoCalcTests.xctest */;
+			productType = "com.apple.product-type.bundle.unit-test";
+		};
+		265F9FF126A08F06005E585F /* LeoCalcUITests */ = {
+			isa = PBXNativeTarget;
+			buildConfigurationList = 265FA00126A08F06005E585F /* Build configuration list for PBXNativeTarget "LeoCalcUITests" */;
+			buildPhases = (
+				265F9FEE26A08F06005E585F /* Sources */,
+				265F9FEF26A08F06005E585F /* Frameworks */,
+				265F9FF026A08F06005E585F /* Resources */,
+			);
+			buildRules = (
+			);
+			dependencies = (
+				265F9FF426A08F06005E585F /* PBXTargetDependency */,
+			);
+			name = LeoCalcUITests;
+			productName = LeoCalcUITests;
+			productReference = 265F9FF226A08F06005E585F /* LeoCalcUITests.xctest */;
+			productType = "com.apple.product-type.bundle.ui-testing";
+		};
+/* End PBXNativeTarget section */
+
+/* Begin PBXProject section */
+		265F9FC926A08F03005E585F /* Project object */ = {
+			isa = PBXProject;
+			attributes = {
+				LastSwiftUpdateCheck = 1250;
+				LastUpgradeCheck = 1250;
+				TargetAttributes = {
+					265F9FD026A08F03005E585F = {
+						CreatedOnToolsVersion = 12.5.1;
+					};
+					265F9FE626A08F06005E585F = {
+						CreatedOnToolsVersion = 12.5.1;
+						TestTargetID = 265F9FD026A08F03005E585F;
+					};
+					265F9FF126A08F06005E585F = {
+						CreatedOnToolsVersion = 12.5.1;
+						TestTargetID = 265F9FD026A08F03005E585F;
+					};
+				};
+			};
+			buildConfigurationList = 265F9FCC26A08F03005E585F /* Build configuration list for PBXProject "LeoCalc" */;
+			compatibilityVersion = "Xcode 9.3";
+			developmentRegion = en;
+			hasScannedForEncodings = 0;
+			knownRegions = (
+				en,
+				Base,
+			);
+			mainGroup = 265F9FC826A08F03005E585F;
+			packageReferences = (
+				265FA00926A09B2B005E585F /* XCRemoteSwiftPackageReference "ViewModelKit" */,
+			);
+			productRefGroup = 265F9FD226A08F03005E585F /* Products */;
+			projectDirPath = "";
+			projectRoot = "";
+			targets = (
+				265F9FD026A08F03005E585F /* LeoCalc */,
+				265F9FE626A08F06005E585F /* LeoCalcTests */,
+				265F9FF126A08F06005E585F /* LeoCalcUITests */,
+			);
+		};
+/* End PBXProject section */
+
+/* Begin PBXResourcesBuildPhase section */
+		265F9FCF26A08F03005E585F /* Resources */ = {
+			isa = PBXResourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				265F9FE126A08F06005E585F /* LaunchScreen.storyboard in Resources */,
+				265F9FDE26A08F06005E585F /* Assets.xcassets in Resources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		265F9FE526A08F06005E585F /* Resources */ = {
+			isa = PBXResourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		265F9FF026A08F06005E585F /* Resources */ = {
+			isa = PBXResourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXResourcesBuildPhase section */
+
+/* Begin PBXSourcesBuildPhase section */
+		265F9FCD26A08F03005E585F /* Sources */ = {
+			isa = PBXSourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				265F9FD926A08F03005E585F /* MainViewController.swift in Sources */,
+				265F9FD526A08F03005E585F /* AppDelegate.swift in Sources */,
+				265F9FD726A08F03005E585F /* SceneDelegate.swift in Sources */,
+				265FA00826A0979D005E585F /* MainViewModel.swift in Sources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		265F9FE326A08F06005E585F /* Sources */ = {
+			isa = PBXSourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				265F9FEC26A08F06005E585F /* LeoCalcTests.swift in Sources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		265F9FEE26A08F06005E585F /* Sources */ = {
+			isa = PBXSourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				265F9FF726A08F06005E585F /* LeoCalcUITests.swift in Sources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXSourcesBuildPhase section */
+
+/* Begin PBXTargetDependency section */
+		265F9FE926A08F06005E585F /* PBXTargetDependency */ = {
+			isa = PBXTargetDependency;
+			target = 265F9FD026A08F03005E585F /* LeoCalc */;
+			targetProxy = 265F9FE826A08F06005E585F /* PBXContainerItemProxy */;
+		};
+		265F9FF426A08F06005E585F /* PBXTargetDependency */ = {
+			isa = PBXTargetDependency;
+			target = 265F9FD026A08F03005E585F /* LeoCalc */;
+			targetProxy = 265F9FF326A08F06005E585F /* PBXContainerItemProxy */;
+		};
+/* End PBXTargetDependency section */
+
+/* Begin PBXVariantGroup section */
+		265F9FDF26A08F06005E585F /* LaunchScreen.storyboard */ = {
+			isa = PBXVariantGroup;
+			children = (
+				265F9FE026A08F06005E585F /* Base */,
+			);
+			name = LaunchScreen.storyboard;
+			sourceTree = "<group>";
+		};
+/* End PBXVariantGroup section */
+
+/* Begin XCBuildConfiguration section */
+		265F9FF926A08F06005E585F /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ALWAYS_SEARCH_USER_PATHS = NO;
+				CLANG_ANALYZER_NONNULL = YES;
+				CLANG_ANALYZER_NUMBER_OBJECT_CONVERSION = YES_AGGRESSIVE;
+				CLANG_CXX_LANGUAGE_STANDARD = "gnu++14";
+				CLANG_CXX_LIBRARY = "libc++";
+				CLANG_ENABLE_MODULES = YES;
+				CLANG_ENABLE_OBJC_ARC = YES;
+				CLANG_ENABLE_OBJC_WEAK = YES;
+				CLANG_WARN_BLOCK_CAPTURE_AUTORELEASING = YES;
+				CLANG_WARN_BOOL_CONVERSION = YES;
+				CLANG_WARN_COMMA = YES;
+				CLANG_WARN_CONSTANT_CONVERSION = YES;
+				CLANG_WARN_DEPRECATED_OBJC_IMPLEMENTATIONS = YES;
+				CLANG_WARN_DIRECT_OBJC_ISA_USAGE = YES_ERROR;
+				CLANG_WARN_DOCUMENTATION_COMMENTS = YES;
+				CLANG_WARN_EMPTY_BODY = YES;
+				CLANG_WARN_ENUM_CONVERSION = YES;
+				CLANG_WARN_INFINITE_RECURSION = YES;
+				CLANG_WARN_INT_CONVERSION = YES;
+				CLANG_WARN_NON_LITERAL_NULL_CONVERSION = YES;
+				CLANG_WARN_OBJC_IMPLICIT_RETAIN_SELF = YES;
+				CLANG_WARN_OBJC_LITERAL_CONVERSION = YES;
+				CLANG_WARN_OBJC_ROOT_CLASS = YES_ERROR;
+				CLANG_WARN_QUOTED_INCLUDE_IN_FRAMEWORK_HEADER = YES;
+				CLANG_WARN_RANGE_LOOP_ANALYSIS = YES;
+				CLANG_WARN_STRICT_PROTOTYPES = YES;
+				CLANG_WARN_SUSPICIOUS_MOVE = YES;
+				CLANG_WARN_UNGUARDED_AVAILABILITY = YES_AGGRESSIVE;
+				CLANG_WARN_UNREACHABLE_CODE = YES;
+				CLANG_WARN__DUPLICATE_METHOD_MATCH = YES;
+				COPY_PHASE_STRIP = NO;
+				DEBUG_INFORMATION_FORMAT = dwarf;
+				ENABLE_STRICT_OBJC_MSGSEND = YES;
+				ENABLE_TESTABILITY = YES;
+				GCC_C_LANGUAGE_STANDARD = gnu11;
+				GCC_DYNAMIC_NO_PIC = NO;
+				GCC_NO_COMMON_BLOCKS = YES;
+				GCC_OPTIMIZATION_LEVEL = 0;
+				GCC_PREPROCESSOR_DEFINITIONS = (
+					"DEBUG=1",
+					"$(inherited)",
+				);
+				GCC_WARN_64_TO_32_BIT_CONVERSION = YES;
+				GCC_WARN_ABOUT_RETURN_TYPE = YES_ERROR;
+				GCC_WARN_UNDECLARED_SELECTOR = YES;
+				GCC_WARN_UNINITIALIZED_AUTOS = YES_AGGRESSIVE;
+				GCC_WARN_UNUSED_FUNCTION = YES;
+				GCC_WARN_UNUSED_VARIABLE = YES;
+				IPHONEOS_DEPLOYMENT_TARGET = 14.5;
+				MTL_ENABLE_DEBUG_INFO = INCLUDE_SOURCE;
+				MTL_FAST_MATH = YES;
+				ONLY_ACTIVE_ARCH = YES;
+				SDKROOT = iphoneos;
+				SWIFT_ACTIVE_COMPILATION_CONDITIONS = DEBUG;
+				SWIFT_OPTIMIZATION_LEVEL = "-Onone";
+			};
+			name = Debug;
+		};
+		265F9FFA26A08F06005E585F /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ALWAYS_SEARCH_USER_PATHS = NO;
+				CLANG_ANALYZER_NONNULL = YES;
+				CLANG_ANALYZER_NUMBER_OBJECT_CONVERSION = YES_AGGRESSIVE;
+				CLANG_CXX_LANGUAGE_STANDARD = "gnu++14";
+				CLANG_CXX_LIBRARY = "libc++";
+				CLANG_ENABLE_MODULES = YES;
+				CLANG_ENABLE_OBJC_ARC = YES;
+				CLANG_ENABLE_OBJC_WEAK = YES;
+				CLANG_WARN_BLOCK_CAPTURE_AUTORELEASING = YES;
+				CLANG_WARN_BOOL_CONVERSION = YES;
+				CLANG_WARN_COMMA = YES;
+				CLANG_WARN_CONSTANT_CONVERSION = YES;
+				CLANG_WARN_DEPRECATED_OBJC_IMPLEMENTATIONS = YES;
+				CLANG_WARN_DIRECT_OBJC_ISA_USAGE = YES_ERROR;
+				CLANG_WARN_DOCUMENTATION_COMMENTS = YES;
+				CLANG_WARN_EMPTY_BODY = YES;
+				CLANG_WARN_ENUM_CONVERSION = YES;
+				CLANG_WARN_INFINITE_RECURSION = YES;
+				CLANG_WARN_INT_CONVERSION = YES;
+				CLANG_WARN_NON_LITERAL_NULL_CONVERSION = YES;
+				CLANG_WARN_OBJC_IMPLICIT_RETAIN_SELF = YES;
+				CLANG_WARN_OBJC_LITERAL_CONVERSION = YES;
+				CLANG_WARN_OBJC_ROOT_CLASS = YES_ERROR;
+				CLANG_WARN_QUOTED_INCLUDE_IN_FRAMEWORK_HEADER = YES;
+				CLANG_WARN_RANGE_LOOP_ANALYSIS = YES;
+				CLANG_WARN_STRICT_PROTOTYPES = YES;
+				CLANG_WARN_SUSPICIOUS_MOVE = YES;
+				CLANG_WARN_UNGUARDED_AVAILABILITY = YES_AGGRESSIVE;
+				CLANG_WARN_UNREACHABLE_CODE = YES;
+				CLANG_WARN__DUPLICATE_METHOD_MATCH = YES;
+				COPY_PHASE_STRIP = NO;
+				DEBUG_INFORMATION_FORMAT = "dwarf-with-dsym";
+				ENABLE_NS_ASSERTIONS = NO;
+				ENABLE_STRICT_OBJC_MSGSEND = YES;
+				GCC_C_LANGUAGE_STANDARD = gnu11;
+				GCC_NO_COMMON_BLOCKS = YES;
+				GCC_WARN_64_TO_32_BIT_CONVERSION = YES;
+				GCC_WARN_ABOUT_RETURN_TYPE = YES_ERROR;
+				GCC_WARN_UNDECLARED_SELECTOR = YES;
+				GCC_WARN_UNINITIALIZED_AUTOS = YES_AGGRESSIVE;
+				GCC_WARN_UNUSED_FUNCTION = YES;
+				GCC_WARN_UNUSED_VARIABLE = YES;
+				IPHONEOS_DEPLOYMENT_TARGET = 14.5;
+				MTL_ENABLE_DEBUG_INFO = NO;
+				MTL_FAST_MATH = YES;
+				SDKROOT = iphoneos;
+				SWIFT_COMPILATION_MODE = wholemodule;
+				SWIFT_OPTIMIZATION_LEVEL = "-O";
+				VALIDATE_PRODUCT = YES;
+			};
+			name = Release;
+		};
+		265F9FFC26A08F06005E585F /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				ASSETCATALOG_COMPILER_GLOBAL_ACCENT_COLOR_NAME = AccentColor;
+				CODE_SIGN_STYLE = Automatic;
+				DEVELOPMENT_TEAM = 8J8LWA8AH5;
+				INFOPLIST_FILE = LeoCalc/Info.plist;
+				LD_RUNPATH_SEARCH_PATHS = (
+					"$(inherited)",
+					"@executable_path/Frameworks",
+				);
+				PRODUCT_BUNDLE_IDENTIFIER = ru.akademon.leocalc.LeoCalc;
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				SWIFT_VERSION = 5.0;
+				TARGETED_DEVICE_FAMILY = "1,2";
+			};
+			name = Debug;
+		};
+		265F9FFD26A08F06005E585F /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				ASSETCATALOG_COMPILER_GLOBAL_ACCENT_COLOR_NAME = AccentColor;
+				CODE_SIGN_STYLE = Automatic;
+				DEVELOPMENT_TEAM = 8J8LWA8AH5;
+				INFOPLIST_FILE = LeoCalc/Info.plist;
+				LD_RUNPATH_SEARCH_PATHS = (
+					"$(inherited)",
+					"@executable_path/Frameworks",
+				);
+				PRODUCT_BUNDLE_IDENTIFIER = ru.akademon.leocalc.LeoCalc;
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				SWIFT_VERSION = 5.0;
+				TARGETED_DEVICE_FAMILY = "1,2";
+			};
+			name = Release;
+		};
+		265F9FFF26A08F06005E585F /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ALWAYS_EMBED_SWIFT_STANDARD_LIBRARIES = YES;
+				BUNDLE_LOADER = "$(TEST_HOST)";
+				CODE_SIGN_STYLE = Automatic;
+				DEVELOPMENT_TEAM = 8J8LWA8AH5;
+				INFOPLIST_FILE = LeoCalcTests/Info.plist;
+				IPHONEOS_DEPLOYMENT_TARGET = 14.5;
+				LD_RUNPATH_SEARCH_PATHS = (
+					"$(inherited)",
+					"@executable_path/Frameworks",
+					"@loader_path/Frameworks",
+				);
+				PRODUCT_BUNDLE_IDENTIFIER = ru.akademon.leocalc.LeoCalcTests;
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				SWIFT_VERSION = 5.0;
+				TARGETED_DEVICE_FAMILY = "1,2";
+				TEST_HOST = "$(BUILT_PRODUCTS_DIR)/LeoCalc.app/LeoCalc";
+			};
+			name = Debug;
+		};
+		265FA00026A08F06005E585F /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ALWAYS_EMBED_SWIFT_STANDARD_LIBRARIES = YES;
+				BUNDLE_LOADER = "$(TEST_HOST)";
+				CODE_SIGN_STYLE = Automatic;
+				DEVELOPMENT_TEAM = 8J8LWA8AH5;
+				INFOPLIST_FILE = LeoCalcTests/Info.plist;
+				IPHONEOS_DEPLOYMENT_TARGET = 14.5;
+				LD_RUNPATH_SEARCH_PATHS = (
+					"$(inherited)",
+					"@executable_path/Frameworks",
+					"@loader_path/Frameworks",
+				);
+				PRODUCT_BUNDLE_IDENTIFIER = ru.akademon.leocalc.LeoCalcTests;
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				SWIFT_VERSION = 5.0;
+				TARGETED_DEVICE_FAMILY = "1,2";
+				TEST_HOST = "$(BUILT_PRODUCTS_DIR)/LeoCalc.app/LeoCalc";
+			};
+			name = Release;
+		};
+		265FA00226A08F06005E585F /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ALWAYS_EMBED_SWIFT_STANDARD_LIBRARIES = YES;
+				CODE_SIGN_STYLE = Automatic;
+				DEVELOPMENT_TEAM = 8J8LWA8AH5;
+				INFOPLIST_FILE = LeoCalcUITests/Info.plist;
+				LD_RUNPATH_SEARCH_PATHS = (
+					"$(inherited)",
+					"@executable_path/Frameworks",
+					"@loader_path/Frameworks",
+				);
+				PRODUCT_BUNDLE_IDENTIFIER = ru.akademon.leocalc.LeoCalcUITests;
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				SWIFT_VERSION = 5.0;
+				TARGETED_DEVICE_FAMILY = "1,2";
+				TEST_TARGET_NAME = LeoCalc;
+			};
+			name = Debug;
+		};
+		265FA00326A08F06005E585F /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ALWAYS_EMBED_SWIFT_STANDARD_LIBRARIES = YES;
+				CODE_SIGN_STYLE = Automatic;
+				DEVELOPMENT_TEAM = 8J8LWA8AH5;
+				INFOPLIST_FILE = LeoCalcUITests/Info.plist;
+				LD_RUNPATH_SEARCH_PATHS = (
+					"$(inherited)",
+					"@executable_path/Frameworks",
+					"@loader_path/Frameworks",
+				);
+				PRODUCT_BUNDLE_IDENTIFIER = ru.akademon.leocalc.LeoCalcUITests;
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				SWIFT_VERSION = 5.0;
+				TARGETED_DEVICE_FAMILY = "1,2";
+				TEST_TARGET_NAME = LeoCalc;
+			};
+			name = Release;
+		};
+/* End XCBuildConfiguration section */
+
+/* Begin XCConfigurationList section */
+		265F9FCC26A08F03005E585F /* Build configuration list for PBXProject "LeoCalc" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				265F9FF926A08F06005E585F /* Debug */,
+				265F9FFA26A08F06005E585F /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
+		};
+		265F9FFB26A08F06005E585F /* Build configuration list for PBXNativeTarget "LeoCalc" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				265F9FFC26A08F06005E585F /* Debug */,
+				265F9FFD26A08F06005E585F /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
+		};
+		265F9FFE26A08F06005E585F /* Build configuration list for PBXNativeTarget "LeoCalcTests" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				265F9FFF26A08F06005E585F /* Debug */,
+				265FA00026A08F06005E585F /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
+		};
+		265FA00126A08F06005E585F /* Build configuration list for PBXNativeTarget "LeoCalcUITests" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				265FA00226A08F06005E585F /* Debug */,
+				265FA00326A08F06005E585F /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
+		};
+/* End XCConfigurationList section */
+
+/* Begin XCRemoteSwiftPackageReference section */
+		265FA00926A09B2B005E585F /* XCRemoteSwiftPackageReference "ViewModelKit" */ = {
+			isa = XCRemoteSwiftPackageReference;
+			repositoryURL = "https://github.com/pomozoff/ViewModelKit.git";
+			requirement = {
+				branch = main;
+				kind = branch;
+			};
+		};
+/* End XCRemoteSwiftPackageReference section */
+
+/* Begin XCSwiftPackageProductDependency section */
+		265FA00A26A09B2B005E585F /* ViewModelKit */ = {
+			isa = XCSwiftPackageProductDependency;
+			package = 265FA00926A09B2B005E585F /* XCRemoteSwiftPackageReference "ViewModelKit" */;
+			productName = ViewModelKit;
+		};
+/* End XCSwiftPackageProductDependency section */
+	};
+	rootObject = 265F9FC926A08F03005E585F /* Project object */;
+}
