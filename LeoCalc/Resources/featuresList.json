@@ -1,0 +1,19 @@
+[
+  {
+    "id": 1,
+    "name": "plus",
+    "enabled": false,
+    "till": "2021-07-23T18:25:43Z"
+  },
+  {
+    "id": 2,
+    "name": "minus",
+    "enabled": true,
+    "till": null
+  },
+  {
+    "id": 3,
+    "name": "mult",
+    "enabled": false
+  }
+]

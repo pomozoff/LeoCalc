@@ -16,6 +16,20 @@
 		265F9FF726A08F06005E585F /* LeoCalcUITests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 265F9FF626A08F06005E585F /* LeoCalcUITests.swift */; };
 		265FA00826A0979D005E585F /* MainViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 265FA00726A0979D005E585F /* MainViewModel.swift */; };
 		265FA00B26A09B2B005E585F /* ViewModelKit in Frameworks */ = {isa = PBXBuildFile; productRef = 265FA00A26A09B2B005E585F /* ViewModelKit */; };
+		265FA00E26A0CA9A005E585F /* NetworkKit in Frameworks */ = {isa = PBXBuildFile; productRef = 265FA00D26A0CA9A005E585F /* NetworkKit */; };
+		265FA01126A0D423005E585F /* FeatureToggleKit in Frameworks */ = {isa = PBXBuildFile; productRef = 265FA01026A0D423005E585F /* FeatureToggleKit */; };
+		265FA01326A17F5E005E585F /* featuresList.json in Resources */ = {isa = PBXBuildFile; fileRef = 265FA01226A17F5E005E585F /* featuresList.json */; };
+		265FA05926A2ED3C005E585F /* FeatureModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 265FA05826A2ED3C005E585F /* FeatureModel.swift */; };
+		265FA05D26A30E34005E585F /* MainBuilder.swift in Sources */ = {isa = PBXBuildFile; fileRef = 265FA05C26A30E34005E585F /* MainBuilder.swift */; };
+		265FA05F26A3243B005E585F /* MainView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 265FA05E26A3243B005E585F /* MainView.swift */; };
+		265FA06226A3451C005E585F /* SingleLineButtonsCollectionLayout.swift in Sources */ = {isa = PBXBuildFile; fileRef = 265FA06126A3451C005E585F /* SingleLineButtonsCollectionLayout.swift */; };
+		265FA06426A3454A005E585F /* StaticButtonsCollectionLayout.swift in Sources */ = {isa = PBXBuildFile; fileRef = 265FA06326A3454A005E585F /* StaticButtonsCollectionLayout.swift */; };
+		265FA06926A357D1005E585F /* UICollectionView+Extensions.swift in Sources */ = {isa = PBXBuildFile; fileRef = 265FA06826A357D1005E585F /* UICollectionView+Extensions.swift */; };
+		265FA06B26A4C597005E585F /* Button.swift in Sources */ = {isa = PBXBuildFile; fileRef = 265FA06A26A4C597005E585F /* Button.swift */; };
+		265FA06D26A4DDD8005E585F /* MainModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 265FA06C26A4DDD8005E585F /* MainModel.swift */; };
+		265FA06F26A4E07A005E585F /* ButtonPlace.swift in Sources */ = {isa = PBXBuildFile; fileRef = 265FA06E26A4E07A005E585F /* ButtonPlace.swift */; };
+		265FA07326A4E198005E585F /* Action.swift in Sources */ = {isa = PBXBuildFile; fileRef = 265FA07226A4E198005E585F /* Action.swift */; };
+		265FA07826A5E2EB005E585F /* Action+Feature.swift in Sources */ = {isa = PBXBuildFile; fileRef = 265FA07726A5E2EB005E585F /* Action+Feature.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -50,6 +64,18 @@
 		265F9FF626A08F06005E585F /* LeoCalcUITests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LeoCalcUITests.swift; sourceTree = "<group>"; };
 		265F9FF826A08F06005E585F /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		265FA00726A0979D005E585F /* MainViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MainViewModel.swift; sourceTree = "<group>"; };
+		265FA01226A17F5E005E585F /* featuresList.json */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.json; path = featuresList.json; sourceTree = "<group>"; };
+		265FA05826A2ED3C005E585F /* FeatureModel.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = FeatureModel.swift; sourceTree = "<group>"; };
+		265FA05C26A30E34005E585F /* MainBuilder.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MainBuilder.swift; sourceTree = "<group>"; };
+		265FA05E26A3243B005E585F /* MainView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MainView.swift; sourceTree = "<group>"; };
+		265FA06126A3451C005E585F /* SingleLineButtonsCollectionLayout.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SingleLineButtonsCollectionLayout.swift; sourceTree = "<group>"; };
+		265FA06326A3454A005E585F /* StaticButtonsCollectionLayout.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = StaticButtonsCollectionLayout.swift; sourceTree = "<group>"; };
+		265FA06826A357D1005E585F /* UICollectionView+Extensions.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UICollectionView+Extensions.swift"; sourceTree = "<group>"; };
+		265FA06A26A4C597005E585F /* Button.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Button.swift; sourceTree = "<group>"; };
+		265FA06C26A4DDD8005E585F /* MainModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MainModel.swift; sourceTree = "<group>"; };
+		265FA06E26A4E07A005E585F /* ButtonPlace.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ButtonPlace.swift; sourceTree = "<group>"; };
+		265FA07226A4E198005E585F /* Action.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Action.swift; sourceTree = "<group>"; };
+		265FA07726A5E2EB005E585F /* Action+Feature.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Action+Feature.swift"; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -57,6 +83,8 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				265FA00E26A0CA9A005E585F /* NetworkKit in Frameworks */,
+				265FA01126A0D423005E585F /* FeatureToggleKit in Frameworks */,
 				265FA00B26A09B2B005E585F /* ViewModelKit in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -101,6 +129,9 @@
 		265F9FD326A08F03005E585F /* LeoCalc */ = {
 			isa = PBXGroup;
 			children = (
+				265FA06726A357BA005E585F /* Extensions */,
+				265FA06026A344CE005E585F /* CollectionLayouts */,
+				265FA05726A2ED31005E585F /* Models */,
 				265FA00626A095F7005E585F /* Main */,
 				265FA00526A08F7F005E585F /* Application */,
 				265FA00426A08F70005E585F /* Resources */,
@@ -130,6 +161,7 @@
 		265FA00426A08F70005E585F /* Resources */ = {
 			isa = PBXGroup;
 			children = (
+				265FA01226A17F5E005E585F /* featuresList.json */,
 				265F9FDD26A08F06005E585F /* Assets.xcassets */,
 				265F9FDF26A08F06005E585F /* LaunchScreen.storyboard */,
 			);
@@ -148,10 +180,42 @@
 		265FA00626A095F7005E585F /* Main */ = {
 			isa = PBXGroup;
 			children = (
-				265F9FD826A08F03005E585F /* MainViewController.swift */,
+				265FA05C26A30E34005E585F /* MainBuilder.swift */,
 				265FA00726A0979D005E585F /* MainViewModel.swift */,
+				265F9FD826A08F03005E585F /* MainViewController.swift */,
+				265FA05E26A3243B005E585F /* MainView.swift */,
+				265FA06C26A4DDD8005E585F /* MainModel.swift */,
 			);
 			path = Main;
+			sourceTree = "<group>";
+		};
+		265FA05726A2ED31005E585F /* Models */ = {
+			isa = PBXGroup;
+			children = (
+				265FA07226A4E198005E585F /* Action.swift */,
+				265FA06A26A4C597005E585F /* Button.swift */,
+				265FA06E26A4E07A005E585F /* ButtonPlace.swift */,
+				265FA05826A2ED3C005E585F /* FeatureModel.swift */,
+				265FA07726A5E2EB005E585F /* Action+Feature.swift */,
+			);
+			path = Models;
+			sourceTree = "<group>";
+		};
+		265FA06026A344CE005E585F /* CollectionLayouts */ = {
+			isa = PBXGroup;
+			children = (
+				265FA06126A3451C005E585F /* SingleLineButtonsCollectionLayout.swift */,
+				265FA06326A3454A005E585F /* StaticButtonsCollectionLayout.swift */,
+			);
+			path = CollectionLayouts;
+			sourceTree = "<group>";
+		};
+		265FA06726A357BA005E585F /* Extensions */ = {
+			isa = PBXGroup;
+			children = (
+				265FA06826A357D1005E585F /* UICollectionView+Extensions.swift */,
+			);
+			path = Extensions;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -172,6 +236,8 @@
 			name = LeoCalc;
 			packageProductDependencies = (
 				265FA00A26A09B2B005E585F /* ViewModelKit */,
+				265FA00D26A0CA9A005E585F /* NetworkKit */,
+				265FA01026A0D423005E585F /* FeatureToggleKit */,
 			);
 			productName = LeoCalc;
 			productReference = 265F9FD126A08F03005E585F /* LeoCalc.app */;
@@ -246,6 +312,8 @@
 			mainGroup = 265F9FC826A08F03005E585F;
 			packageReferences = (
 				265FA00926A09B2B005E585F /* XCRemoteSwiftPackageReference "ViewModelKit" */,
+				265FA00C26A0CA9A005E585F /* XCRemoteSwiftPackageReference "NetworkKit" */,
+				265FA00F26A0D423005E585F /* XCRemoteSwiftPackageReference "FeatureToggleKit" */,
 			);
 			productRefGroup = 265F9FD226A08F03005E585F /* Products */;
 			projectDirPath = "";
@@ -263,6 +331,7 @@
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				265FA01326A17F5E005E585F /* featuresList.json in Resources */,
 				265F9FE126A08F06005E585F /* LaunchScreen.storyboard in Resources */,
 				265F9FDE26A08F06005E585F /* Assets.xcassets in Resources */,
 			);
@@ -289,10 +358,21 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				265FA06226A3451C005E585F /* SingleLineButtonsCollectionLayout.swift in Sources */,
 				265F9FD926A08F03005E585F /* MainViewController.swift in Sources */,
+				265FA05F26A3243B005E585F /* MainView.swift in Sources */,
+				265FA07326A4E198005E585F /* Action.swift in Sources */,
 				265F9FD526A08F03005E585F /* AppDelegate.swift in Sources */,
+				265FA05D26A30E34005E585F /* MainBuilder.swift in Sources */,
+				265FA05926A2ED3C005E585F /* FeatureModel.swift in Sources */,
+				265FA06926A357D1005E585F /* UICollectionView+Extensions.swift in Sources */,
 				265F9FD726A08F03005E585F /* SceneDelegate.swift in Sources */,
+				265FA06D26A4DDD8005E585F /* MainModel.swift in Sources */,
 				265FA00826A0979D005E585F /* MainViewModel.swift in Sources */,
+				265FA07826A5E2EB005E585F /* Action+Feature.swift in Sources */,
+				265FA06B26A4C597005E585F /* Button.swift in Sources */,
+				265FA06F26A4E07A005E585F /* ButtonPlace.swift in Sources */,
+				265FA06426A3454A005E585F /* StaticButtonsCollectionLayout.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -627,6 +707,22 @@
 				kind = branch;
 			};
 		};
+		265FA00C26A0CA9A005E585F /* XCRemoteSwiftPackageReference "NetworkKit" */ = {
+			isa = XCRemoteSwiftPackageReference;
+			repositoryURL = "https://github.com/pomozoff/NetworkKit.git";
+			requirement = {
+				branch = main;
+				kind = branch;
+			};
+		};
+		265FA00F26A0D423005E585F /* XCRemoteSwiftPackageReference "FeatureToggleKit" */ = {
+			isa = XCRemoteSwiftPackageReference;
+			repositoryURL = "https://github.com/pomozoff/FeatureToggleKit.git";
+			requirement = {
+				branch = main;
+				kind = branch;
+			};
+		};
 /* End XCRemoteSwiftPackageReference section */
 
 /* Begin XCSwiftPackageProductDependency section */
@@ -634,6 +730,16 @@
 			isa = XCSwiftPackageProductDependency;
 			package = 265FA00926A09B2B005E585F /* XCRemoteSwiftPackageReference "ViewModelKit" */;
 			productName = ViewModelKit;
+		};
+		265FA00D26A0CA9A005E585F /* NetworkKit */ = {
+			isa = XCSwiftPackageProductDependency;
+			package = 265FA00C26A0CA9A005E585F /* XCRemoteSwiftPackageReference "NetworkKit" */;
+			productName = NetworkKit;
+		};
+		265FA01026A0D423005E585F /* FeatureToggleKit */ = {
+			isa = XCSwiftPackageProductDependency;
+			package = 265FA00F26A0D423005E585F /* XCRemoteSwiftPackageReference "FeatureToggleKit" */;
+			productName = FeatureToggleKit;
 		};
 /* End XCSwiftPackageProductDependency section */
 	};

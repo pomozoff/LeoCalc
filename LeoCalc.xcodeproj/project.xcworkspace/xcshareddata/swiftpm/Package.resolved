@@ -2,11 +2,38 @@
   "object": {
     "pins": [
       {
+        "package": "CommonKit",
+        "repositoryURL": "https://github.com/pomozoff/CommonKit.git",
+        "state": {
+          "branch": "main",
+          "revision": "be7a3b6a422ae2eb89e72047de43a7bfae161515",
+          "version": null
+        }
+      },
+      {
+        "package": "FeatureToggleKit",
+        "repositoryURL": "https://github.com/pomozoff/FeatureToggleKit.git",
+        "state": {
+          "branch": "main",
+          "revision": "c8c0faeb5c2c74bced0a99c6f1e73bb3b95daf02",
+          "version": null
+        }
+      },
+      {
+        "package": "NetworkKit",
+        "repositoryURL": "https://github.com/pomozoff/NetworkKit.git",
+        "state": {
+          "branch": "main",
+          "revision": "c4ea805b9964925229286b620e5c8958e9250dae",
+          "version": null
+        }
+      },
+      {
         "package": "ViewModelKit",
         "repositoryURL": "https://github.com/pomozoff/ViewModelKit.git",
         "state": {
           "branch": "main",
-          "revision": "94d1e876781a9821be049c55d4974a4d744ce54d",
+          "revision": "d3c7461dd97cc338479c2e5e6314954848ac4b1e",
           "version": null
         }
       }

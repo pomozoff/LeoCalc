@@ -53,7 +53,7 @@ class SceneDelegate: UIResponder, UIWindowSceneDelegate {
 private extension SceneDelegate {
     func createViewController() -> UIViewController {
         let viewController = MainViewController()
-        let viewModel = MainViewModel()
+        let viewModel = MainBuilder.buildViewModel()
 
         viewController.configure(with: viewModel)
 
