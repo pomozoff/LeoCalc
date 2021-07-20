@@ -12,7 +12,7 @@
 		265F9FD926A08F03005E585F /* MainViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 265F9FD826A08F03005E585F /* MainViewController.swift */; };
 		265F9FDE26A08F06005E585F /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 265F9FDD26A08F06005E585F /* Assets.xcassets */; };
 		265F9FE126A08F06005E585F /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 265F9FDF26A08F06005E585F /* LaunchScreen.storyboard */; };
-		265F9FEC26A08F06005E585F /* LeoCalcTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 265F9FEB26A08F06005E585F /* LeoCalcTests.swift */; };
+		265F9FEC26A08F06005E585F /* MainModelTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 265F9FEB26A08F06005E585F /* MainModelTests.swift */; };
 		265F9FF726A08F06005E585F /* LeoCalcUITests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 265F9FF626A08F06005E585F /* LeoCalcUITests.swift */; };
 		265FA00826A0979D005E585F /* MainViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 265FA00726A0979D005E585F /* MainViewModel.swift */; };
 		265FA00B26A09B2B005E585F /* ViewModelKit in Frameworks */ = {isa = PBXBuildFile; productRef = 265FA00A26A09B2B005E585F /* ViewModelKit */; };
@@ -30,6 +30,7 @@
 		265FA06F26A4E07A005E585F /* ButtonPlace.swift in Sources */ = {isa = PBXBuildFile; fileRef = 265FA06E26A4E07A005E585F /* ButtonPlace.swift */; };
 		265FA07326A4E198005E585F /* Action.swift in Sources */ = {isa = PBXBuildFile; fileRef = 265FA07226A4E198005E585F /* Action.swift */; };
 		265FA07826A5E2EB005E585F /* Action+Feature.swift in Sources */ = {isa = PBXBuildFile; fileRef = 265FA07726A5E2EB005E585F /* Action+Feature.swift */; };
+		265FA07A26A60F1F005E585F /* Behavior.swift in Sources */ = {isa = PBXBuildFile; fileRef = 265FA07926A60F1E005E585F /* Behavior.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -58,7 +59,7 @@
 		265F9FE026A08F06005E585F /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
 		265F9FE226A08F06005E585F /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		265F9FE726A08F06005E585F /* LeoCalcTests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = LeoCalcTests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
-		265F9FEB26A08F06005E585F /* LeoCalcTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LeoCalcTests.swift; sourceTree = "<group>"; };
+		265F9FEB26A08F06005E585F /* MainModelTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MainModelTests.swift; sourceTree = "<group>"; };
 		265F9FED26A08F06005E585F /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		265F9FF226A08F06005E585F /* LeoCalcUITests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = LeoCalcUITests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
 		265F9FF626A08F06005E585F /* LeoCalcUITests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LeoCalcUITests.swift; sourceTree = "<group>"; };
@@ -76,6 +77,7 @@
 		265FA06E26A4E07A005E585F /* ButtonPlace.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ButtonPlace.swift; sourceTree = "<group>"; };
 		265FA07226A4E198005E585F /* Action.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Action.swift; sourceTree = "<group>"; };
 		265FA07726A5E2EB005E585F /* Action+Feature.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Action+Feature.swift"; sourceTree = "<group>"; };
+		265FA07926A60F1E005E585F /* Behavior.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Behavior.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -143,7 +145,7 @@
 		265F9FEA26A08F06005E585F /* LeoCalcTests */ = {
 			isa = PBXGroup;
 			children = (
-				265F9FEB26A08F06005E585F /* LeoCalcTests.swift */,
+				265F9FEB26A08F06005E585F /* MainModelTests.swift */,
 				265F9FED26A08F06005E585F /* Info.plist */,
 			);
 			path = LeoCalcTests;
@@ -197,6 +199,7 @@
 				265FA06E26A4E07A005E585F /* ButtonPlace.swift */,
 				265FA05826A2ED3C005E585F /* FeatureModel.swift */,
 				265FA07726A5E2EB005E585F /* Action+Feature.swift */,
+				265FA07926A60F1E005E585F /* Behavior.swift */,
 			);
 			path = Models;
 			sourceTree = "<group>";
@@ -367,6 +370,7 @@
 				265FA05926A2ED3C005E585F /* FeatureModel.swift in Sources */,
 				265FA06926A357D1005E585F /* UICollectionView+Extensions.swift in Sources */,
 				265F9FD726A08F03005E585F /* SceneDelegate.swift in Sources */,
+				265FA07A26A60F1F005E585F /* Behavior.swift in Sources */,
 				265FA06D26A4DDD8005E585F /* MainModel.swift in Sources */,
 				265FA00826A0979D005E585F /* MainViewModel.swift in Sources */,
 				265FA07826A5E2EB005E585F /* Action+Feature.swift in Sources */,
@@ -380,7 +384,7 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				265F9FEC26A08F06005E585F /* LeoCalcTests.swift in Sources */,
+				265F9FEC26A08F06005E585F /* MainModelTests.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
