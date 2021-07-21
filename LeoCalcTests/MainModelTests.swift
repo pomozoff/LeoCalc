@@ -222,5 +222,37 @@ class MainModelTests: XCTestCase {
         XCTAssert(model.total == 4, "Invalid result, should be 4")
     }
 
+    func testTwoPlusThreeClearFourEqual() throws {
+        model.didReceive(action: .two)
+        model.didReceive(action: .plus)
+        model.didReceive(action: .three)
+        model.didReceive(action: .clear)
+        model.didReceive(action: .four)
+        model.didReceive(action: .equal)
+
+        XCTAssert(model.total == 6, "Invalid result, should be 6")
+    }
+
+    func testTwoClearClearFour() throws {
+        model.didReceive(action: .two)
+        model.didReceive(action: .clear)
+        model.didReceive(action: .clear)
+        model.didReceive(action: .four)
+
+        XCTAssert(model.total == 4, "Invalid result, should be 4")
+    }
+
+    func testTwoPlusThreeClearClearFourEqual() throws {
+        model.didReceive(action: .two)
+        model.didReceive(action: .plus)
+        model.didReceive(action: .three)
+        model.didReceive(action: .clear)
+        model.didReceive(action: .clear)
+        model.didReceive(action: .four)
+        model.didReceive(action: .equal)
+
+        XCTAssert(model.total == 4, "Invalid result, should be 4")
+    }
+
     private var model: MainModel!
 }

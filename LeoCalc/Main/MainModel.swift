@@ -8,7 +8,7 @@
 /*
  TASKS
  + 1. sin, cos
-   2. AC/C
+ + 2. AC/C
    3. fractional
    4. bitcoin
  */
@@ -22,7 +22,7 @@ class MainModel {
     private(set) var total: Decimal = 0
 
     @Published
-    private(set) var isCleaned = false
+    private(set) var isCleaned = true
 
     init() {
         reset()
@@ -34,6 +34,8 @@ class MainModel {
 
             isCleaned = true
             total = 0
+        } else {
+            isCleaned = false
         }
 
         if action.isOperator && !inputStack.isEmpty {
@@ -59,7 +61,7 @@ class MainModel {
 private extension MainModel {
     func reset() {
         total = 0
-        isCleaned = false
+        isCleaned = true
         inputStack.removeAll()
         previousAction = nil
     }
