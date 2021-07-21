@@ -81,6 +81,16 @@ class MainModelTests: XCTestCase {
         XCTAssert(model.total == 5, "Invalid result, should be 5")
     }
 
+    func testThreePlusMinusOneEqual() throws {
+        model.didReceive(action: .three)
+        model.didReceive(action: .plus)
+        model.didReceive(action: .minus)
+        model.didReceive(action: .one)
+        model.didReceive(action: .equal)
+
+        XCTAssert(model.total == 2, "Invalid result, should be 2")
+    }
+
     func testTwoPlusThreeMult() throws {
         model.didReceive(action: .two)
         model.didReceive(action: .plus)
@@ -189,6 +199,27 @@ class MainModelTests: XCTestCase {
         model.didReceive(action: .cos)
 
         XCTAssert(model.total == 0, "Invalid result, should be 0")
+    }
+
+    func testNineZeroSin() throws {
+        model.didReceive(action: .nine)
+        model.didReceive(action: .zero)
+        model.didReceive(action: .sin)
+
+        XCTAssert(model.total == 1, "Invalid result, should be 1")
+    }
+
+    func testFourFiveMultTwoSin() throws {
+        model.didReceive(action: .four)
+        model.didReceive(action: .five)
+        model.didReceive(action: .multiplication)
+        model.didReceive(action: .two)
+        model.didReceive(action: .plus)
+        model.didReceive(action: .sin)
+        model.didReceive(action: .three)
+        model.didReceive(action: .equal)
+
+        XCTAssert(model.total == 4, "Invalid result, should be 4")
     }
 
     private var model: MainModel!

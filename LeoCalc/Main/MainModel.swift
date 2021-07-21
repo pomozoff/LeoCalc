@@ -7,10 +7,10 @@
 
 /*
  TASKS
- 1. sin, cos
- 2. AC/C
- 3. fractional
- 4. bitcoin
+ + 1. sin, cos
+   2. AC/C
+   3. fractional
+   4. bitcoin
  */
 
 import Combine
@@ -80,8 +80,16 @@ private extension MainModel {
     }
 
     func run(_ action: Action) {
+        var topAction: Action?
         let behavior: Behavior?
+
         if action.type == .binaryOperator {
+            guard inputStack.top?.isOperator != true else {
+                _ = inputStack.pop()
+                inputStack.push(action)
+                return
+            }
+
             guard let lastOperator = inputStack.last(where: \.isOperator),
                   action.priority <= lastOperator.priority
             else {
@@ -90,6 +98,10 @@ private extension MainModel {
             }
             behavior = lastOperator.rawValue
         } else {
+            if inputStack.top?.isOperator == true {
+                topAction = inputStack.pop()
+            }
+
             behavior = action.rawValue
         }
 
@@ -128,6 +140,8 @@ private extension MainModel {
 
         if action.type == .binaryOperator {
             run(action)
+        } else if let topAction = topAction {
+            inputStack.push(topAction)
         }
     }
 
