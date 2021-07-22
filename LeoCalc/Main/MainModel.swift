@@ -5,14 +5,6 @@
 //  Created by Anton Pomozov on 19.07.2021.
 //
 
-/*
- TASKS
- + 1. sin, cos
- + 2. AC/C
- + 3. fractional
-   4. bitcoin
- */
-
 import Combine
 import CommonKit
 import Foundation
@@ -64,7 +56,7 @@ extension MainModel: Calculable {
     }
 
     func didReceive(action: Action) {
-        if action == .clear {
+        if action.type == .clear {
             guard !_isCleaned else { return reset() }
 
             _isCleaned = true
@@ -110,9 +102,9 @@ private extension MainModel {
 
     func run(_ action: Action) {
         var topAction: Action?
-        let behavior: Behavior?
+        let currentAction: Action?
 
-        if action.type == .binaryOperator {
+        if action.class == .binaryOperator {
             guard inputStack.top?.isOperator != true else {
                 _ = inputStack.pop()
                 inputStack.push(action)
@@ -125,13 +117,13 @@ private extension MainModel {
                 inputStack.push(action)
                 return
             }
-            behavior = lastOperator.rawValue
+            currentAction = lastOperator
         } else {
             if inputStack.top?.isOperator == true {
                 topAction = inputStack.pop()
             }
 
-            behavior = action.rawValue
+            currentAction = action
         }
 
         guard let rightOperand = fetchOperand() else {
@@ -141,8 +133,8 @@ private extension MainModel {
 
         var operands = [rightOperand]
 
-        if action.type == .binaryOperator, let `operator` = fetchOperator() {
-            if `operator`.type == .binaryOperator {
+        if action.class == .binaryOperator, let `operator` = fetchOperator() {
+            if `operator`.class == .binaryOperator {
                 guard let leftOperand = fetchOperand() else {
                     assertionFailure("Failed to get a left operand")
                     return reset()
@@ -164,7 +156,7 @@ private extension MainModel {
                 inputStack.push(digit)
             }
 
-            if action.type == .binaryOperator {
+            if action.class == .binaryOperator {
                 run(action)
             } else if let topAction = topAction {
                 inputStack.push(topAction)
@@ -172,7 +164,7 @@ private extension MainModel {
         }
 
         _isAwaiting = true
-        behavior?.calculate(operands) { [unowned self] result in
+        currentAction?.calculate(operands) { [unowned self] result in
             switch result {
             case let .success(value):
                 handleResult(value)

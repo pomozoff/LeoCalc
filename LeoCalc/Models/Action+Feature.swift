@@ -7,7 +7,7 @@
 
 import FeatureToggleKit
 import Foundation
-
+/*
 extension Action: Feature {
     var name: String { title }
 
@@ -21,6 +21,7 @@ extension Action: Feature {
     }
 }
 
-private struct AssociatedKeys {
-    static var isEnabled: UInt8 = 0
+private enum AssociatedKeys {
+    static var isEnabled = "isEnabled"
 }
+ */

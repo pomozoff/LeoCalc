@@ -15,7 +15,7 @@ struct FeatureModel {
     let till: Date?
 
     var action: Action? {
-        Action.allCases.first { $0.title == name }
+        Behavior.Kind.allCases.first { $0.rawValue == name }.map { Action(type: $0) }
     }
 }
 

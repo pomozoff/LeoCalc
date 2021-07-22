@@ -12,6 +12,7 @@ typealias BinaryCalculate = (Decimal, Decimal) -> Decimal
 
 enum DataSourceError: Error {
     case invalidNumberOfOperands
+    case valueNotFound
 }
 
 protocol DataSource: AnyObject {
@@ -19,7 +20,7 @@ protocol DataSource: AnyObject {
 
     var anyDataSource: AnyDataSource<T> { get }
 
-    func calculate(operands: [Decimal], completion: @escaping (Result<T, Swift.Error>) -> Void)
+    func calculate(_ operands: [Decimal], with completion: @escaping (Result<T, Swift.Error>) -> Void)
 }
 
 extension DataSource {

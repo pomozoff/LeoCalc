@@ -13,9 +13,9 @@ enum BitcoinAPI {
 }
 
 extension BitcoinAPI: Target {
-    var baseURL: String { "https://example.com" }
+    var baseURL: String { "https://api.coindesk.com" }
 
-    var path: String { "none" }
+    var path: String { "/v1/bpi/currentprice.json" }
 
     var method: NetworkKit.Method { .get }
 

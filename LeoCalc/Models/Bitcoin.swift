@@ -8,5 +8,5 @@
 import Foundation
 
 struct Bitcoin: Decodable {
-    let value: Decimal
+    let bpi: [String: Currency]
 }

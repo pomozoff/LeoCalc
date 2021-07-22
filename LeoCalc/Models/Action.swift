@@ -5,100 +5,48 @@
 //  Created by Anton Pomozov on 19.07.2021.
 //
 
+import FeatureToggleKit
 import Foundation
 
-enum Action: CaseIterable {
-    case clear
-    case sin
-    case cos
-    case bitcoin
-    case plus
-    case minus
-    case division
-    case multiplication
-    case zero
-    case one
-    case two
-    case three
-    case four
-    case five
-    case six
-    case seven
-    case eight
-    case nine
-    case point
-    case equal
+struct Action {
+    let isEnabled: Bool
+
+    var type: Behavior.Kind { behavior.kind }
+
+    func calculate(_ operands: [Decimal], with completion: @escaping (Result<Decimal, Error>) -> Void) -> Void {
+        behavior.calculate(operands, with: completion)
+    }
+
+    private let behavior: Behavior
 }
 
 extension Action {
-    init?(name: String) {
-        guard let action = Action.allCases.first(where: { $0.name == name }) else { return nil }
-        self = action
-    }
-}
-
-extension Action: RawRepresentable {
-    var rawValue: Behavior {
-        switch self {
-        case .clear: return .clear
-        case .sin: return .sin
-        case .cos: return .cos
-        case .bitcoin: return .bitcoin
-        case .plus: return .plus
-        case .minus: return .minus
-        case .division: return .division
-        case .multiplication: return .multiplication
-        case .zero: return .zero
-        case .one: return .one
-        case .two: return .two
-        case .three: return .three
-        case .four: return .four
-        case .five: return .five
-        case .six: return .six
-        case .seven: return .seven
-        case .eight: return .eight
-        case .nine: return .nine
-        case .point: return .point
-        case .equal: return .equal
-        }
+    init(type: Behavior.Kind, isEnabled: Bool = true) {
+        self.behavior = type.default
+        self.isEnabled = isEnabled
     }
 
-    init?(rawValue: Behavior) {
-        switch rawValue {
-        case .clear: self = .clear
-        case .sin: self = .sin
-        case .cos: self = .cos
-        case .bitcoin: self = .bitcoin
-        case .plus: self = .plus
-        case .minus: self = .minus
-        case .division: self = .division
-        case .multiplication: self = .multiplication
-        case .zero: self = .zero
-        case .one: self = .one
-        case .two: self = .two
-        case .three: self = .three
-        case .four: self = .four
-        case .five: self = .five
-        case .six: self = .six
-        case .seven: self = .seven
-        case .eight: self = .eight
-        case .nine: self = .nine
-        case .point: self = .point
-        case .equal: self = .equal
-        default: return nil
-        }
+    init(behavior: Behavior, isEnabled: Bool = true) {
+        self.behavior = behavior
+        self.isEnabled = isEnabled
+    }
+
+    init?(name: String, isEnabled: Bool = true) {
+        guard let behavior = Behavior.Kind.allCases.first(where: { $0.rawValue == name })?.default else { return nil }
+        self.behavior = behavior
+        self.isEnabled = isEnabled
     }
 }
 
 extension Action {
-    enum `Type` {
+    enum `Class` {
         case digit
         case unaryOperator
         case binaryOperator
     }
 
-    var type: Type {
-        switch self {
+    var `class`: Class {
+        switch behavior.kind {
         case .clear, .sin, .cos, .bitcoin:
             return .unaryOperator
         case .plus, .minus, .division, .multiplication, .equal:
@@ -109,7 +57,7 @@ extension Action {
     }
 
     var priority: Int {
-        switch self {
+        switch behavior.kind {
         case .clear:
             return 100
         case .sin, .cos, .bitcoin:
@@ -125,11 +73,15 @@ extension Action {
         }
     }
 
-    var title: String { rawValue.name }
+    var title: String { behavior.kind.rawValue }
 
-    var digit: Decimal? { Decimal(string: rawValue.name) }
+    var digit: Decimal? { Decimal(string: behavior.kind.rawValue) }
 
-    var isOperator: Bool { type == .unaryOperator || type == .binaryOperator }
+    var isOperator: Bool { `class` == .unaryOperator || `class` == .binaryOperator }
 
-    var isDigit: Bool { type == .digit }
+    var isDigit: Bool { `class` == .digit }
+}
+
+extension Action: Feature {
+    var name: String { title }
 }

@@ -18,6 +18,6 @@ extension UICollectionView {
     }
 }
 
-private struct AssociatedKeys {
-    static var reuseIdentifier: UInt8 = 0
+private enum AssociatedKeys {
+    static var reuseIdentifier = "reuseIdentifier"
 }

@@ -15,7 +15,7 @@ class ConstantDataSource {
 }
 
 extension ConstantDataSource: DataSource {
-    func calculate(operands: [Decimal], completion: (Result<Decimal, Error>) -> Void) {
+    func calculate(_ operands: [Decimal], with completion: (Result<Decimal, Error>) -> Void) {
         completion(.success(value))
     }
 }

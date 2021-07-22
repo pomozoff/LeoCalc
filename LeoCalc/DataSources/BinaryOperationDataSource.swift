@@ -15,7 +15,7 @@ class BinaryOperationDataSource {
 }
 
 extension BinaryOperationDataSource: DataSource {
-    func calculate(operands: [Decimal], completion: (Result<Decimal, Error>) -> Void) {
+    func calculate(_ operands: [Decimal], with completion: (Result<Decimal, Error>) -> Void) {
         guard operands.count == 2 else { return completion(.failure(DataSourceError.invalidNumberOfOperands)) }
         return completion(.success(calculate(operands[0], operands[1])))
     }

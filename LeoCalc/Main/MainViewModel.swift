@@ -38,7 +38,7 @@ extension MainViewModel {
 
     func buttonSize(at indexPath: IndexPath, in place: ButtonPlace, screenWidth: CGFloat) -> CGSize {
         let height = screenWidth / CGFloat(Constants.numberOfColumns)
-        let width = (place == .static && filteredButtons(in: place)[indexPath.item].action == .zero) ? height * 2 : height
+        let width = (place == .static && filteredButtons(in: place)[indexPath.item].action.type == .zero) ? height * 2 : height
 
         return CGSize(width: width, height: height)
     }

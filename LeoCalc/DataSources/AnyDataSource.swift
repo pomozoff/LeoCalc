@@ -12,7 +12,7 @@ class AnyDataSource<T>: DataSource {
         self.getValue = wrappedDataSource.calculate
     }
 
-    func calculate(operands: [Decimal], completion: @escaping (Result<T, Swift.Error>) -> Void) {
+    func calculate(_ operands: [Decimal], with completion: @escaping (Result<T, Swift.Error>) -> Void) {
         getValue(operands, completion)
     }
 

@@ -15,7 +15,7 @@ class UnaryOperationDataSource {
 }
 
 extension UnaryOperationDataSource: DataSource {
-    func calculate(operands: [Decimal], completion: (Result<Decimal, Error>) -> Void) {
+    func calculate(_ operands: [Decimal], with completion: (Result<Decimal, Error>) -> Void) {
         guard operands.count == 1 else { return completion(.failure(DataSourceError.invalidNumberOfOperands)) }
         return completion(.success(calculate(operands[0])))
     }
