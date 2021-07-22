@@ -17,25 +17,52 @@ import Combine
 import CommonKit
 import Foundation
 
+protocol Calculable {
+    var total: AnyPublisher<Decimal, Never> { get }
+    var isCleaned: AnyPublisher<Bool, Never> { get }
+
+    func didReceive(action: Action)
+}
+
 class MainModel {
-    @Published
-    private(set) var total: Decimal = 0
-
-    @Published
-    private(set) var isCleaned = true
-
     init() {
         reset()
     }
 
+    private var inputStack = Stack<Action>()
+    private var previousAction: Action?
+
+    @Published
+    private var _total: Decimal = 0
+
+    @Published
+    private var _isCleaned = true
+
+    private let decimalFormatter: NumberFormatter = {
+        let formatter = NumberFormatter()
+        formatter.locale = Locale(identifier: "en_US")
+        formatter.numberStyle = .decimal
+        return formatter
+    }()
+}
+
+extension MainModel: Calculable {
+    var total: AnyPublisher<Decimal, Never> {
+        $_total.eraseToAnyPublisher()
+    }
+
+    var isCleaned: AnyPublisher<Bool, Never> {
+        $_isCleaned.eraseToAnyPublisher()
+    }
+
     func didReceive(action: Action) {
         if action == .clear {
-            guard !isCleaned else { return reset() }
+            guard !_isCleaned else { return reset() }
 
-            isCleaned = true
-            total = 0
+            _isCleaned = true
+            _total = 0
         } else {
-            isCleaned = false
+            _isCleaned = false
         }
 
         if action.isOperator && !inputStack.isEmpty {
@@ -46,22 +73,12 @@ class MainModel {
 
         previousAction = action
     }
-
-    private var inputStack = Stack<Action>()
-    private var previousAction: Action?
-
-    private let decimalFormatter: NumberFormatter = {
-        let formatter = NumberFormatter()
-        formatter.locale = Locale(identifier: "en_US")
-        formatter.numberStyle = .decimal
-        return formatter
-    }()
 }
 
 private extension MainModel {
     func reset() {
-        total = 0
-        isCleaned = true
+        _total = 0
+        _isCleaned = true
         inputStack.removeAll()
         previousAction = nil
     }
@@ -74,10 +91,10 @@ private extension MainModel {
         }
 
         if previousAction?.isDigit == true {
-            total *= 10
-            total += digit
+            _total *= 10
+            _total += digit
         } else {
-            total = digit
+            _total = digit
         }
     }
 
@@ -133,7 +150,7 @@ private extension MainModel {
             return reset()
         }
 
-        total = result
+        _total = result
 
         var reversedStack = stack.reversed()
         while let digit = reversedStack.pop() {
