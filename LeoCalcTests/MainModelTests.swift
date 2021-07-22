@@ -20,14 +20,14 @@ class MainModelTests: XCTestCase {
     func testPlus() throws {
         model.didReceive(action: .plus)
 
-        XCTAssert(model.total == 0, "Invalid result, should be 0")
+        XCTAssert(model._total == 0, "Invalid result, should be 0")
     }
 
     func testPlusMinus() throws {
         model.didReceive(action: .plus)
         model.didReceive(action: .minus)
 
-        XCTAssert(model.total == 0, "Invalid result, should be 0")
+        XCTAssert(model._total == 0, "Invalid result, should be 0")
     }
 
     func testPlusMinusTwoPlusFourEqual() throws {
@@ -38,20 +38,20 @@ class MainModelTests: XCTestCase {
         model.didReceive(action: .four)
         model.didReceive(action: .equal)
 
-        XCTAssert(model.total == 6, "Invalid result, should be 6")
+        XCTAssert(model._total == 6, "Invalid result, should be 6")
     }
 
     func testTwo() throws {
         model.didReceive(action: .two)
 
-        XCTAssert(model.total == 2, "Invalid result, should be 2")
+        XCTAssert(model._total == 2, "Invalid result, should be 2")
     }
 
     func testTwoPlus() throws {
         model.didReceive(action: .two)
         model.didReceive(action: .plus)
 
-        XCTAssert(model.total == 2, "Invalid result, should be 2")
+        XCTAssert(model._total == 2, "Invalid result, should be 2")
     }
 
     func testTwoPlusThree() throws {
@@ -60,7 +60,7 @@ class MainModelTests: XCTestCase {
         model.didReceive(action: .three)
         model.didReceive(action: .plus)
 
-        XCTAssert(model.total == 5, "Invalid result, should be 5")
+        XCTAssert(model._total == 5, "Invalid result, should be 5")
     }
 
     func testTwoPlusThreePlus() throws {
@@ -69,7 +69,7 @@ class MainModelTests: XCTestCase {
         model.didReceive(action: .three)
         model.didReceive(action: .plus)
 
-        XCTAssert(model.total == 5, "Invalid result, should be 5")
+        XCTAssert(model._total == 5, "Invalid result, should be 5")
     }
 
     func testTwoPlusThreeEqual() throws {
@@ -78,7 +78,7 @@ class MainModelTests: XCTestCase {
         model.didReceive(action: .three)
         model.didReceive(action: .equal)
 
-        XCTAssert(model.total == 5, "Invalid result, should be 5")
+        XCTAssert(model._total == 5, "Invalid result, should be 5")
     }
 
     func testThreePlusMinusOneEqual() throws {
@@ -88,7 +88,7 @@ class MainModelTests: XCTestCase {
         model.didReceive(action: .one)
         model.didReceive(action: .equal)
 
-        XCTAssert(model.total == 2, "Invalid result, should be 2")
+        XCTAssert(model._total == 2, "Invalid result, should be 2")
     }
 
     func testTwoPlusThreeMult() throws {
@@ -97,7 +97,7 @@ class MainModelTests: XCTestCase {
         model.didReceive(action: .three)
         model.didReceive(action: .multiplication)
 
-        XCTAssert(model.total == 3, "Invalid result, should be 3")
+        XCTAssert(model._total == 3, "Invalid result, should be 3")
     }
 
     func testTwoPlusThreeMultTwo() throws {
@@ -107,7 +107,7 @@ class MainModelTests: XCTestCase {
         model.didReceive(action: .multiplication)
         model.didReceive(action: .two)
 
-        XCTAssert(model.total == 2, "Invalid result, should be 2")
+        XCTAssert(model._total == 2, "Invalid result, should be 2")
     }
 
     func testTwoPlusThreeMultTwoMult() throws {
@@ -118,7 +118,7 @@ class MainModelTests: XCTestCase {
         model.didReceive(action: .two)
         model.didReceive(action: .multiplication)
 
-        XCTAssert(model.total == 6, "Invalid result, should be 6")
+        XCTAssert(model._total == 6, "Invalid result, should be 6")
     }
 
     func testTwoPlusThreeMultTwoMultTwo() throws {
@@ -130,7 +130,7 @@ class MainModelTests: XCTestCase {
         model.didReceive(action: .multiplication)
         model.didReceive(action: .two)
 
-        XCTAssert(model.total == 2, "Invalid result, should be 2")
+        XCTAssert(model._total == 2, "Invalid result, should be 2")
     }
 
     func testTwoPlusThreeMultTwoMultTwoPlus() throws {
@@ -143,7 +143,7 @@ class MainModelTests: XCTestCase {
         model.didReceive(action: .two)
         model.didReceive(action: .plus)
 
-        XCTAssert(model.total == 14, "Invalid result, should be 14")
+        XCTAssert(model._total == 14, "Invalid result, should be 14")
     }
 
     func testTwoPlusThreeMultTwoMultTwoPlusThree() throws {
@@ -157,7 +157,7 @@ class MainModelTests: XCTestCase {
         model.didReceive(action: .plus)
         model.didReceive(action: .three)
 
-        XCTAssert(model.total == 3, "Invalid result, should be 3")
+        XCTAssert(model._total == 3, "Invalid result, should be 3")
     }
 
     func testTwoPlusThreeMultTwoMultTwoPlusThreeEqual() throws {
@@ -172,7 +172,7 @@ class MainModelTests: XCTestCase {
         model.didReceive(action: .three)
         model.didReceive(action: .equal)
 
-        XCTAssert(model.total == 17, "Invalid result, should be 17")
+        XCTAssert(model._total == 17, "Invalid result, should be 17")
     }
 
     func testTwoMultThreePlus() throws {
@@ -181,7 +181,7 @@ class MainModelTests: XCTestCase {
         model.didReceive(action: .three)
         model.didReceive(action: .plus)
 
-        XCTAssert(model.total == 6, "Invalid result, should be 6")
+        XCTAssert(model._total == 6, "Invalid result, should be 6")
     }
 
     func testTwoMultThreeMult() throws {
@@ -190,7 +190,7 @@ class MainModelTests: XCTestCase {
         model.didReceive(action: .three)
         model.didReceive(action: .multiplication)
 
-        XCTAssert(model.total == 6, "Invalid result, should be 6")
+        XCTAssert(model._total == 6, "Invalid result, should be 6")
     }
 
     func testNineZeroCos() throws {
@@ -198,7 +198,7 @@ class MainModelTests: XCTestCase {
         model.didReceive(action: .zero)
         model.didReceive(action: .cos)
 
-        XCTAssert(model.total == 0, "Invalid result, should be 0")
+        XCTAssert(model._total == 0, "Invalid result, should be 0")
     }
 
     func testNineZeroSin() throws {
@@ -206,7 +206,7 @@ class MainModelTests: XCTestCase {
         model.didReceive(action: .zero)
         model.didReceive(action: .sin)
 
-        XCTAssert(model.total == 1, "Invalid result, should be 1")
+        XCTAssert(model._total == 1, "Invalid result, should be 1")
     }
 
     func testFourFiveMultTwoSin() throws {
@@ -219,7 +219,7 @@ class MainModelTests: XCTestCase {
         model.didReceive(action: .three)
         model.didReceive(action: .equal)
 
-        XCTAssert(model.total == 4, "Invalid result, should be 4")
+        XCTAssert(model._total == 4, "Invalid result, should be 4")
     }
 
     func testTwoPlusThreeClearFourEqual() throws {
@@ -230,7 +230,7 @@ class MainModelTests: XCTestCase {
         model.didReceive(action: .four)
         model.didReceive(action: .equal)
 
-        XCTAssert(model.total == 6, "Invalid result, should be 6")
+        XCTAssert(model._total == 6, "Invalid result, should be 6")
     }
 
     func testTwoClearClearFour() throws {
@@ -239,7 +239,7 @@ class MainModelTests: XCTestCase {
         model.didReceive(action: .clear)
         model.didReceive(action: .four)
 
-        XCTAssert(model.total == 4, "Invalid result, should be 4")
+        XCTAssert(model._total == 4, "Invalid result, should be 4")
     }
 
     func testTwoPlusThreeClearClearFourEqual() throws {
@@ -251,7 +251,30 @@ class MainModelTests: XCTestCase {
         model.didReceive(action: .four)
         model.didReceive(action: .equal)
 
-        XCTAssert(model.total == 4, "Invalid result, should be 4")
+        XCTAssert(model._total == 4, "Invalid result, should be 4")
+    }
+
+    func testOnePointTwoPlusTwoPointThreeEqual() throws {
+        model.didReceive(action: .one)
+        model.didReceive(action: .point)
+        model.didReceive(action: .two)
+        model.didReceive(action: .plus)
+        model.didReceive(action: .two)
+        model.didReceive(action: .point)
+        model.didReceive(action: .three)
+        model.didReceive(action: .equal)
+
+        XCTAssert(model._total == Decimal(3.5), "Invalid result, should be 3.5")
+    }
+
+    func testFivePlusDivisionTwoEqual() throws {
+        model.didReceive(action: .five)
+        model.didReceive(action: .plus)
+        model.didReceive(action: .division)
+        model.didReceive(action: .two)
+        model.didReceive(action: .equal)
+
+        XCTAssert(model._total == Decimal(2.5), "Invalid result, should be 2.5")
     }
 
     private var model: MainModel!

@@ -9,7 +9,7 @@
  TASKS
  + 1. sin, cos
  + 2. AC/C
-   3. fractional
+ + 3. fractional
    4. bitcoin
  */
 
@@ -33,10 +33,10 @@ class MainModel {
     private var previousAction: Action?
 
     @Published
-    private var _total: Decimal = 0
+    private(set) var _total: Decimal = 0
 
     @Published
-    private var _isCleaned = true
+    private(set) var _isCleaned = true
 
     private let decimalFormatter: NumberFormatter = {
         let formatter = NumberFormatter()
@@ -180,7 +180,6 @@ private extension MainModel {
         return inputStack.pop()
     }
 
-    // TODO: Handle fractional numbers
     func stackToNumber(_ stack: inout Stack<Action>) -> Decimal? {
         var decimalString = ""
         var reversedStack = Stack<Action>()
@@ -195,7 +194,6 @@ private extension MainModel {
         return decimalFormatter.number(from: decimalString)?.decimalValue
     }
 
-    // TODO: Handle fractional numbers
     func numberToStack(_ number: Decimal) -> Stack<Action>? {
         var stack = Stack<Action>()
 
