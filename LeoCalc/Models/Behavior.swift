@@ -6,58 +6,47 @@
 //
 
 import Foundation
+import NetworkKit
 
-struct Behavior {
+final class Behavior {
     let name: String
-    let calculate: ([Decimal]) -> Decimal?
 
-    private init(name: String, calculate: @escaping ([Decimal]) -> Decimal?) {
-        self.name = name
-        self.calculate = calculate
+    private(set) lazy var calculate: ([Decimal], @escaping (Result<Decimal, Error>) -> Void) -> Void = { [weak self] in
+        self?.dataSource?.calculate(operands: $0, completion: $1)
     }
+
+    private init(
+        name: String,
+        dataSource: AnyDataSource<Decimal>? = nil
+    ) {
+        self.name = name
+        self.dataSource = dataSource
+    }
+
+    private let dataSource: AnyDataSource<Decimal>?
 }
 
 extension Behavior {
-    static let clear = Behavior(name: "AC") { _ in 0 }
-    static let sin = Behavior(name: "sin") { operands in
-        guard operands.count == 1 else { return nil }
-        return Math.calcSin(from: operands[0])
-    }
-    static let cos = Behavior(name: "cos") { operands in
-        guard operands.count == 1 else { return nil }
-        return Math.calcCos(from: operands[0])
-    }
-    static let bitcoin = Behavior(name: "₿") { _ in
-        0
-    }
-    static let plus = Behavior(name: "+") { operands in
-        guard operands.count == 2 else { return nil }
-        return operands[0] + operands[1]
-    }
-    static let minus = Behavior(name: "-") { operands in
-        guard operands.count == 2 else { return nil }
-        return operands[0] - operands[1]
-    }
-    static let division = Behavior(name: "÷") { operands in
-        guard operands.count == 2 else { return nil }
-        return operands[0] / operands[1]
-    }
-    static let multiplication = Behavior(name: "×") { operands in
-        guard operands.count == 2 else { return nil }
-        return operands[0] * operands[1]
-    }
-    static let zero = Behavior(name: "0") { _ in nil }
-    static let one = Behavior(name: "1") { _ in nil }
-    static let two = Behavior(name: "2") { _ in nil }
-    static let three = Behavior(name: "3") { _ in nil }
-    static let four = Behavior(name: "4") { _ in nil }
-    static let five = Behavior(name: "5") { _ in nil }
-    static let six = Behavior(name: "6") { _ in nil }
-    static let seven = Behavior(name: "7") { _ in nil }
-    static let eight = Behavior(name: "8") { _ in nil }
-    static let nine = Behavior(name: "9") { _ in nil }
-    static let point = Behavior(name: ".") { _ in nil }
-    static let equal = Behavior(name: "=") { _ in nil }
+    static let clear = Behavior(name: "AC", dataSource: ConstantDataSource(value: 0).anyDataSource)
+    static let sin = Behavior(name: "sin", dataSource: UnaryOperationDataSource { Math.calcSin(from: $0) }.anyDataSource)
+    static let cos = Behavior(name: "cos", dataSource: UnaryOperationDataSource { Math.calcCos(from: $0) }.anyDataSource)
+    static let bitcoin = Behavior(name: "₿", dataSource: BitcoinDataSource(bitcoinProvider: Provider<BitcoinAPI>(), parsable: Parser()).anyDataSource)
+    static let plus = Behavior(name: "+", dataSource: BinaryOperationDataSource { $0 + $1 }.anyDataSource)
+    static let minus = Behavior(name: "-", dataSource: BinaryOperationDataSource { $0 - $1 }.anyDataSource)
+    static let division = Behavior(name: "÷", dataSource: BinaryOperationDataSource { $0 / $1 }.anyDataSource)
+    static let multiplication = Behavior(name: "×", dataSource: BinaryOperationDataSource { $0 * $1 }.anyDataSource)
+    static let zero = Behavior(name: "0")
+    static let one = Behavior(name: "1")
+    static let two = Behavior(name: "2")
+    static let three = Behavior(name: "3")
+    static let four = Behavior(name: "4")
+    static let five = Behavior(name: "5")
+    static let six = Behavior(name: "6")
+    static let seven = Behavior(name: "7")
+    static let eight = Behavior(name: "8")
+    static let nine = Behavior(name: "9")
+    static let point = Behavior(name: ".")
+    static let equal = Behavior(name: "=")
 }
 
 extension Behavior: Hashable {

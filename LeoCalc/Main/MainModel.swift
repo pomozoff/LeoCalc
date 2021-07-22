@@ -20,6 +20,7 @@ import Foundation
 protocol Calculable {
     var total: AnyPublisher<Decimal, Never> { get }
     var isCleaned: AnyPublisher<Bool, Never> { get }
+    var isAwaiting: AnyPublisher<Bool, Never> { get }
 
     func didReceive(action: Action)
 }
@@ -38,6 +39,9 @@ class MainModel {
     @Published
     private(set) var _isCleaned = true
 
+    @Published
+    private(set) var _isAwaiting = false
+
     private let decimalFormatter: NumberFormatter = {
         let formatter = NumberFormatter()
         formatter.locale = Locale(identifier: "en_US")
@@ -53,6 +57,10 @@ extension MainModel: Calculable {
 
     var isCleaned: AnyPublisher<Bool, Never> {
         $_isCleaned.eraseToAnyPublisher()
+    }
+
+    var isAwaiting: AnyPublisher<Bool, Never> {
+        $_isAwaiting.eraseToAnyPublisher()
     }
 
     func didReceive(action: Action) {
@@ -79,6 +87,8 @@ private extension MainModel {
     func reset() {
         _total = 0
         _isCleaned = true
+        _isAwaiting = false
+
         inputStack.removeAll()
         previousAction = nil
     }
@@ -141,26 +151,35 @@ private extension MainModel {
             }
         }
 
-        guard let result = behavior?.calculate(operands) else {
-            assertionFailure("Failed to calculate a result")
-            return reset()
-        }
-        guard var stack = numberToStack(result) else {
-            assertionFailure("Failed to put the result to a stack")
-            return reset()
+        func handleResult(_ result: Decimal) {
+            guard var stack = numberToStack(result) else {
+                assertionFailure("Failed to put the result to a stack")
+                return reset()
+            }
+
+            _total = result
+
+            var reversedStack = stack.reversed()
+            while let digit = reversedStack.pop() {
+                inputStack.push(digit)
+            }
+
+            if action.type == .binaryOperator {
+                run(action)
+            } else if let topAction = topAction {
+                inputStack.push(topAction)
+            }
         }
 
-        _total = result
-
-        var reversedStack = stack.reversed()
-        while let digit = reversedStack.pop() {
-            inputStack.push(digit)
-        }
-
-        if action.type == .binaryOperator {
-            run(action)
-        } else if let topAction = topAction {
-            inputStack.push(topAction)
+        _isAwaiting = true
+        behavior?.calculate(operands) { [unowned self] result in
+            switch result {
+            case let .success(value):
+                handleResult(value)
+            case let .failure(error):
+                print(error)
+            }
+            _isAwaiting = false
         }
     }
 

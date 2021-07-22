@@ -31,6 +31,15 @@
 		265FA07326A4E198005E585F /* Action.swift in Sources */ = {isa = PBXBuildFile; fileRef = 265FA07226A4E198005E585F /* Action.swift */; };
 		265FA07826A5E2EB005E585F /* Action+Feature.swift in Sources */ = {isa = PBXBuildFile; fileRef = 265FA07726A5E2EB005E585F /* Action+Feature.swift */; };
 		265FA07A26A60F1F005E585F /* Behavior.swift in Sources */ = {isa = PBXBuildFile; fileRef = 265FA07926A60F1E005E585F /* Behavior.swift */; };
+		26B3DAD426A9E61D0058639F /* DataSource.swift in Sources */ = {isa = PBXBuildFile; fileRef = 26B3DAD326A9E61D0058639F /* DataSource.swift */; };
+		26B3DAD626A9EA540058639F /* AnyDataSource.swift in Sources */ = {isa = PBXBuildFile; fileRef = 26B3DAD526A9EA540058639F /* AnyDataSource.swift */; };
+		26B3DAD826A9EA630058639F /* ConstantDataSource.swift in Sources */ = {isa = PBXBuildFile; fileRef = 26B3DAD726A9EA630058639F /* ConstantDataSource.swift */; };
+		26B3DADC26A9EC400058639F /* UnaryOperationDataSource.swift in Sources */ = {isa = PBXBuildFile; fileRef = 26B3DADB26A9EC400058639F /* UnaryOperationDataSource.swift */; };
+		26B3DADE26A9F3F50058639F /* BinaryOperationDataSource.swift in Sources */ = {isa = PBXBuildFile; fileRef = 26B3DADD26A9F3F50058639F /* BinaryOperationDataSource.swift */; };
+		26B3DAE026A9F4570058639F /* BitcoinDataSource.swift in Sources */ = {isa = PBXBuildFile; fileRef = 26B3DADF26A9F4570058639F /* BitcoinDataSource.swift */; };
+		26B3DAE226A9F8CA0058639F /* BitcoinAPI.swift in Sources */ = {isa = PBXBuildFile; fileRef = 26B3DAE126A9F8CA0058639F /* BitcoinAPI.swift */; };
+		26B3DAE426A9F9A30058639F /* Bitcoin.swift in Sources */ = {isa = PBXBuildFile; fileRef = 26B3DAE326A9F9A30058639F /* Bitcoin.swift */; };
+		26B3DAEA26A9FBAC0058639F /* Parser.swift in Sources */ = {isa = PBXBuildFile; fileRef = 26B3DAE926A9FBAC0058639F /* Parser.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -78,6 +87,15 @@
 		265FA07226A4E198005E585F /* Action.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Action.swift; sourceTree = "<group>"; };
 		265FA07726A5E2EB005E585F /* Action+Feature.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Action+Feature.swift"; sourceTree = "<group>"; };
 		265FA07926A60F1E005E585F /* Behavior.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Behavior.swift; sourceTree = "<group>"; };
+		26B3DAD326A9E61D0058639F /* DataSource.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DataSource.swift; sourceTree = "<group>"; };
+		26B3DAD526A9EA540058639F /* AnyDataSource.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AnyDataSource.swift; sourceTree = "<group>"; };
+		26B3DAD726A9EA630058639F /* ConstantDataSource.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ConstantDataSource.swift; sourceTree = "<group>"; };
+		26B3DADB26A9EC400058639F /* UnaryOperationDataSource.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UnaryOperationDataSource.swift; sourceTree = "<group>"; };
+		26B3DADD26A9F3F50058639F /* BinaryOperationDataSource.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BinaryOperationDataSource.swift; sourceTree = "<group>"; };
+		26B3DADF26A9F4570058639F /* BitcoinDataSource.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BitcoinDataSource.swift; sourceTree = "<group>"; };
+		26B3DAE126A9F8CA0058639F /* BitcoinAPI.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BitcoinAPI.swift; sourceTree = "<group>"; };
+		26B3DAE326A9F9A30058639F /* Bitcoin.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Bitcoin.swift; sourceTree = "<group>"; };
+		26B3DAE926A9FBAC0058639F /* Parser.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Parser.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -135,6 +153,8 @@
 				265FA06026A344CE005E585F /* CollectionLayouts */,
 				265FA05726A2ED31005E585F /* Models */,
 				265FA00626A095F7005E585F /* Main */,
+				26B3DAD226A9E6090058639F /* DataSources */,
+				26B3DAE826A9FB9B0058639F /* Utils */,
 				265FA00526A08F7F005E585F /* Application */,
 				265FA00426A08F70005E585F /* Resources */,
 				265F9FE226A08F06005E585F /* Info.plist */,
@@ -195,11 +215,13 @@
 			isa = PBXGroup;
 			children = (
 				265FA07226A4E198005E585F /* Action.swift */,
+				26B3DAE126A9F8CA0058639F /* BitcoinAPI.swift */,
 				265FA06A26A4C597005E585F /* Button.swift */,
 				265FA06E26A4E07A005E585F /* ButtonPlace.swift */,
 				265FA05826A2ED3C005E585F /* FeatureModel.swift */,
 				265FA07726A5E2EB005E585F /* Action+Feature.swift */,
 				265FA07926A60F1E005E585F /* Behavior.swift */,
+				26B3DAE326A9F9A30058639F /* Bitcoin.swift */,
 			);
 			path = Models;
 			sourceTree = "<group>";
@@ -219,6 +241,27 @@
 				265FA06826A357D1005E585F /* UICollectionView+Extensions.swift */,
 			);
 			path = Extensions;
+			sourceTree = "<group>";
+		};
+		26B3DAD226A9E6090058639F /* DataSources */ = {
+			isa = PBXGroup;
+			children = (
+				26B3DAD326A9E61D0058639F /* DataSource.swift */,
+				26B3DAD526A9EA540058639F /* AnyDataSource.swift */,
+				26B3DADD26A9F3F50058639F /* BinaryOperationDataSource.swift */,
+				26B3DADF26A9F4570058639F /* BitcoinDataSource.swift */,
+				26B3DAD726A9EA630058639F /* ConstantDataSource.swift */,
+				26B3DADB26A9EC400058639F /* UnaryOperationDataSource.swift */,
+			);
+			path = DataSources;
+			sourceTree = "<group>";
+		};
+		26B3DAE826A9FB9B0058639F /* Utils */ = {
+			isa = PBXGroup;
+			children = (
+				26B3DAE926A9FBAC0058639F /* Parser.swift */,
+			);
+			path = Utils;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -361,20 +404,29 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				26B3DAE426A9F9A30058639F /* Bitcoin.swift in Sources */,
 				265FA06226A3451C005E585F /* SingleLineButtonsCollectionLayout.swift in Sources */,
 				265F9FD926A08F03005E585F /* MainViewController.swift in Sources */,
+				26B3DADE26A9F3F50058639F /* BinaryOperationDataSource.swift in Sources */,
+				26B3DAE026A9F4570058639F /* BitcoinDataSource.swift in Sources */,
 				265FA05F26A3243B005E585F /* MainView.swift in Sources */,
 				265FA07326A4E198005E585F /* Action.swift in Sources */,
+				26B3DAE226A9F8CA0058639F /* BitcoinAPI.swift in Sources */,
 				265F9FD526A08F03005E585F /* AppDelegate.swift in Sources */,
 				265FA05D26A30E34005E585F /* MainBuilder.swift in Sources */,
 				265FA05926A2ED3C005E585F /* FeatureModel.swift in Sources */,
 				265FA06926A357D1005E585F /* UICollectionView+Extensions.swift in Sources */,
 				265F9FD726A08F03005E585F /* SceneDelegate.swift in Sources */,
+				26B3DAD626A9EA540058639F /* AnyDataSource.swift in Sources */,
 				265FA07A26A60F1F005E585F /* Behavior.swift in Sources */,
+				26B3DAD426A9E61D0058639F /* DataSource.swift in Sources */,
 				265FA06D26A4DDD8005E585F /* MainModel.swift in Sources */,
+				26B3DAEA26A9FBAC0058639F /* Parser.swift in Sources */,
+				26B3DAD826A9EA630058639F /* ConstantDataSource.swift in Sources */,
 				265FA00826A0979D005E585F /* MainViewModel.swift in Sources */,
 				265FA07826A5E2EB005E585F /* Action+Feature.swift in Sources */,
 				265FA06B26A4C597005E585F /* Button.swift in Sources */,
+				26B3DADC26A9EC400058639F /* UnaryOperationDataSource.swift in Sources */,
 				265FA06F26A4E07A005E585F /* ButtonPlace.swift in Sources */,
 				265FA06426A3454A005E585F /* StaticButtonsCollectionLayout.swift in Sources */,
 			);
