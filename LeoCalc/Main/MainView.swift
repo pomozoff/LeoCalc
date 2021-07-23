@@ -113,11 +113,6 @@ extension MainView {
         get { resultLabel.text }
         set { resultLabel.text = newValue }
     }
-
-    var clearButtonText: String? {
-        get { resultLabel.text }
-        set { resultLabel.text = newValue }
-    }
 }
 
 private extension MainView {

@@ -11,6 +11,7 @@ struct Button {
     let place: ButtonPlace
     let action: Action
 
+    var type: Behavior.Kind { action.type }
     var isEnabled: Bool { action.isEnabled }
     var title: String { action.name }
 }

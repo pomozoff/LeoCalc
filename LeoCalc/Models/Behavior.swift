@@ -11,6 +11,9 @@ import NetworkKit
 final class Behavior {
     let kind: Kind
 
+    // FIXME: Move to a View Protocol
+    var title: String?
+
     func calculate(_ operands: [Decimal], with completion: @escaping (Result<Decimal, Error>) -> Void) -> Void {
         dataSource?.calculate(operands, with: completion)
     }

@@ -88,10 +88,11 @@ extension MainViewController: ViewModelOwnable {
 
         didUpdateCancellable = viewModel.didUpdate
             .sink { [unowned self] in
-                invalidateLayouts()
+                // FIXME: Reload only updated buttons
+                reloadButtons()
             }
 
-        mainView.topButtonsCollection.reloadData()
+        reloadButtons()
     }
 }
 
@@ -184,6 +185,12 @@ private extension MainViewController {
         topCollectionLayout.invalidateLayout()
         staticCollectionLayout.invalidateLayout()
         sideCollectionLayout.invalidateLayout()
+    }
+
+    func reloadButtons() {
+        mainView.topButtonsCollection.reloadData()
+        mainView.staticButtonsCollection.reloadData()
+        mainView.sideButtonsCollection.reloadData()
     }
 
     func createCellTitleLabel(with text: String?) -> UILabel {

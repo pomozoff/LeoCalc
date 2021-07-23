@@ -27,6 +27,8 @@ class MainViewModel {
         self.provider = provider
         self.buttons = buttons
         self.model = model
+
+        setupBindings()
     }
 
     private let provider: FeaturesProvider
@@ -34,6 +36,7 @@ class MainViewModel {
     private let model: MainModel
 
     private let _didUpdate = PassthroughSubject<Void, Never>()
+    private var isCleanedCancellable = AnyCancellable {}
 }
 
 extension MainViewModel: ViewModel {
@@ -86,6 +89,22 @@ extension MainViewModel {
 }
 
 private extension MainViewModel {
+    func setupBindings() {
+        isCleanedCancellable = model.isCleaned
+            .removeDuplicates()
+            .sink { [weak self] in
+                guard let self = self else { return }
+
+                self.updateClearButton(value: $0)
+                self._didUpdate.send(())
+            }
+    }
+
+    func updateClearButton(value: Bool) {
+        guard let button = buttons.first(where: { $0.action.type == .clear }) else { return }
+        button.action.updateName(with: value ? "AC" : "C")
+    }
+
     func filteredButtons(in place: ButtonPlace) -> [Button] {
         buttons.filter { $0.isEnabled && $0.place == place }
     }

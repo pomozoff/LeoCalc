@@ -8,10 +8,15 @@
 import FeatureToggleKit
 import Foundation
 
-struct Action {
+struct Action: Feature {
+    var name: String { behavior.title ?? behavior.kind.rawValue }
     let isEnabled: Bool
 
     var type: Behavior.Kind { behavior.kind }
+
+    func updateName(with text: String) {
+        behavior.title = text
+    }
 
     private let behavior: Behavior
 }
@@ -82,8 +87,4 @@ extension Action {
     var isOperator: Bool { `class` == .unaryOperator || `class` == .binaryOperator }
 
     var isDigit: Bool { `class` == .digit }
-}
-
-extension Action: Feature {
-    var name: String { behavior.kind.rawValue }
 }
