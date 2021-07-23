@@ -14,6 +14,22 @@ class MainView: UIView {
         }
     }
 
+    var isActivityIndicatorViewShown = false {
+        didSet {
+            isActivityIndicatorViewShown ? activityIndicatorView.startAnimating() : activityIndicatorView.stopAnimating()
+
+            UIView.animate(
+                withDuration: Constants.animationDuration,
+                delay: 0.0,
+                options: isActivityIndicatorViewShown ? .curveEaseOut : .curveEaseIn,
+                animations: {
+                    self.dimmedView.alpha = self.isActivityIndicatorViewShown ? 1.0 : 0.0
+                },
+                completion: nil
+            )
+        }
+    }
+
     init(
         topCollectionLayout: UICollectionViewLayout,
         staticCollectionLayout: UICollectionViewLayout,
@@ -84,10 +100,7 @@ class MainView: UIView {
         return collection
     }()
 
-    private let horizontalButtonsContainer: UIStackView = {
-        let stack = UIStackView()
-        return stack
-    }()
+    private let horizontalButtonsContainer = UIStackView()
 
     private(set) lazy var staticButtonsCollection: UICollectionView = {
         let collection = UICollectionView(frame: .zero, collectionViewLayout: staticCollectionLayout)
@@ -106,6 +119,14 @@ class MainView: UIView {
 
         return collection
     }()
+
+    private let dimmedView: UIView = {
+        let view = UIView()
+        view.backgroundColor = .systemGray5.withAlphaComponent(0.2)
+        return view
+    }()
+
+    private let activityIndicatorView = UIActivityIndicatorView(style: .large)
 }
 
 extension MainView {
@@ -143,6 +164,22 @@ private extension MainView {
 
         verticalButtonsContainer.addArrangedSubview(topButtonsCollection)
         verticalButtonsContainer.addArrangedSubview(staticButtonsCollection)
+
+        dimmedView.translatesAutoresizingMaskIntoConstraints = false
+        addSubview(dimmedView)
+        NSLayoutConstraint.activate([
+            dimmedView.leadingAnchor.constraint(equalTo: self.leadingAnchor),
+            dimmedView.trailingAnchor.constraint(equalTo: self.trailingAnchor),
+            dimmedView.topAnchor.constraint(equalTo: self.topAnchor),
+            dimmedView.bottomAnchor.constraint(equalTo: self.bottomAnchor),
+        ])
+
+        activityIndicatorView.translatesAutoresizingMaskIntoConstraints = false
+        dimmedView.addSubview(activityIndicatorView)
+        NSLayoutConstraint.activate([
+            activityIndicatorView.centerXAnchor.constraint(equalTo: dimmedView.centerXAnchor),
+            activityIndicatorView.centerYAnchor.constraint(equalTo: dimmedView.centerYAnchor),
+        ])
     }
 
     func updateCollectionsSize(with buttonHeight: CGFloat) {
@@ -166,4 +203,5 @@ private enum Constants {
     static let cornerRadius: CGFloat = 4.0
     static let buttonFontSize: CGFloat = 32.0
     static let buttonHeight: CGFloat = 64.0
+    static let animationDuration: TimeInterval = 0.15
 }

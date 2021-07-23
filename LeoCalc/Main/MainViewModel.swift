@@ -15,6 +15,10 @@ class MainViewModel {
         model.total.eraseToAnyPublisher()
     }
 
+    var isAwaiting: AnyPublisher<Bool, Never> {
+        model.isAwaiting.eraseToAnyPublisher()
+    }
+
     var didUpdate: AnyPublisher<Void, Never> {
         _didUpdate.eraseToAnyPublisher()
     }

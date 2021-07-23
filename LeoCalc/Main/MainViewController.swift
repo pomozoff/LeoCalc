@@ -72,6 +72,7 @@ class MainViewController: UIViewController {
     }()
 
     private var totalCancellable = AnyCancellable {}
+    private var isAwaitingCancellable = AnyCancellable {}
     private var didUpdateCancellable = AnyCancellable {}
 }
 
@@ -84,6 +85,11 @@ extension MainViewController: ViewModelOwnable {
         totalCancellable = viewModel.total
             .sink { [unowned self] in
                 mainView.resultText = String(describing: $0)
+            }
+
+        isAwaitingCancellable = viewModel.isAwaiting
+            .sink { [unowned self] in
+                mainView.isActivityIndicatorViewShown = $0
             }
 
         didUpdateCancellable = viewModel.didUpdate
