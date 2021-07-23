@@ -1,19 +1,83 @@
 [
   {
-    "id": 1,
-    "name": "plus",
-    "enabled": false,
-    "till": "2021-07-23T18:25:43Z"
+    "name": "AC",
+    "enabled": true
   },
   {
-    "id": 2,
-    "name": "minus",
+    "name": "sin",
     "enabled": true,
-    "till": null
+    "till": "2021-07-21T18:25:43Z"
   },
   {
-    "id": 3,
-    "name": "mult",
+    "name": "cos",
+    "enabled": true
+  },
+  {
+    "name": "₿",
+    "enabled": true
+  },
+  {
+    "name": "+",
     "enabled": false
+  },
+  {
+    "name": "-",
+    "enabled": true
+  },
+  {
+    "name": "÷",
+    "enabled": true
+  },
+  {
+    "name": "×",
+    "enabled": true
+  },
+  {
+    "name": "0",
+    "enabled": true
+  },
+  {
+    "name": "1",
+    "enabled": true
+  },
+  {
+    "name": "2",
+    "enabled": true
+  },
+  {
+    "name": "3",
+    "enabled": true
+  },
+  {
+    "name": "4",
+    "enabled": true
+  },
+  {
+    "name": "5",
+    "enabled": true
+  },
+  {
+    "name": "6",
+    "enabled": false
+  },
+  {
+    "name": "7",
+    "enabled": true
+  },
+  {
+    "name": "8",
+    "enabled": true
+  },
+  {
+    "name": "9",
+    "enabled": true
+  },
+  {
+    "name": ".",
+    "enabled": true
+  },
+  {
+    "name": "=",
+    "enabled": true
   }
 ]

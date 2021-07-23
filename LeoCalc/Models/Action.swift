@@ -13,10 +13,6 @@ struct Action {
 
     var type: Behavior.Kind { behavior.kind }
 
-    func calculate(_ operands: [Decimal], with completion: @escaping (Result<Decimal, Error>) -> Void) -> Void {
-        behavior.calculate(operands, with: completion)
-    }
-
     private let behavior: Behavior
 }
 
@@ -35,6 +31,14 @@ extension Action {
         guard let behavior = Behavior.Kind.allCases.first(where: { $0.rawValue == name })?.default else { return nil }
         self.behavior = behavior
         self.isEnabled = isEnabled
+    }
+
+    func calculate(_ operands: [Decimal], with completion: @escaping (Result<Decimal, Error>) -> Void) -> Void {
+        behavior.calculate(operands, with: completion)
+    }
+
+    func copy(isEnabled: Bool) -> Action {
+        Action(behavior: behavior, isEnabled: isEnabled)
     }
 }
 
@@ -73,8 +77,6 @@ extension Action {
         }
     }
 
-    var title: String { behavior.kind.rawValue }
-
     var digit: Decimal? { Decimal(string: behavior.kind.rawValue) }
 
     var isOperator: Bool { `class` == .unaryOperator || `class` == .binaryOperator }
@@ -83,5 +85,5 @@ extension Action {
 }
 
 extension Action: Feature {
-    var name: String { title }
+    var name: String { behavior.kind.rawValue }
 }

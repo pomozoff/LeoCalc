@@ -165,13 +165,15 @@ private extension MainModel {
 
         _isAwaiting = true
         currentAction?.calculate(operands) { [unowned self] result in
-            switch result {
-            case let .success(value):
-                handleResult(value)
-            case let .failure(error):
-                print(error)
+            DispatchQueue.main.async {
+                switch result {
+                case let .success(value):
+                    handleResult(value)
+                case let .failure(error):
+                    print(error)
+                }
+                _isAwaiting = false
             }
-            _isAwaiting = false
         }
     }
 

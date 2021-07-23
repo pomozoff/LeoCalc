@@ -5,20 +5,35 @@
 //  Created by Anton Pomozov on 15.07.2021.
 //
 
+import Combine
 import FeatureToggleKit
 import ViewModelKit
 import UIKit
 
 class MainViewModel {
-    var updateResult: ((Double) -> Void)?
+    var total: AnyPublisher<Decimal, Never> {
+        model.total.eraseToAnyPublisher()
+    }
 
-    init(provider: FeaturesProvider, buttons: [Button]) {
+    var didUpdate: AnyPublisher<Void, Never> {
+        _didUpdate.eraseToAnyPublisher()
+    }
+
+    init(
+        provider: FeaturesProvider,
+        buttons: [Button],
+        model: MainModel
+    ) {
         self.provider = provider
         self.buttons = buttons
+        self.model = model
     }
 
     private let provider: FeaturesProvider
-    private let buttons: [Button]
+    private var buttons: [Button]
+    private let model: MainModel
+
+    private let _didUpdate = PassthroughSubject<Void, Never>()
 }
 
 extension MainViewModel: ViewModel {
@@ -26,20 +41,33 @@ extension MainViewModel: ViewModel {
 }
 
 extension MainViewModel {
+    func fetch() -> Void {
+        provider.fetch { [weak self] result in
+            switch result {
+            case .success():
+                self?.updateButtonsIfNeeded()
+            case let .failure(error):
+                NSLog("Fetching features failed with error: \(error)")
+            }
+        }
+    }
+
     func buttonsCount(in place: ButtonPlace) -> Int {
         filteredButtons(in: place).count
     }
 
     func textForItem(at indexPath: IndexPath, in place: ButtonPlace) -> String? {
-        let filteredButtons = filteredButtons(in: place)
-        guard 0 ..< filteredButtons.count ~= indexPath.item else { return nil }
-        return filteredButtons[indexPath.item].title
+        button(at: indexPath, in: place)?.title
     }
 
     func buttonSize(at indexPath: IndexPath, in place: ButtonPlace, screenWidth: CGFloat) -> CGSize {
         let height = screenWidth / CGFloat(Constants.numberOfColumns)
-        let width = (place == .static && filteredButtons(in: place)[indexPath.item].action.type == .zero) ? height * 2 : height
-
+        let width: CGFloat
+        if place == .static, let button = button(at: indexPath, in: place) {
+            width = (button.action.type == .zero) ? height * 2 : height
+        } else {
+            width = height
+        }
         return CGSize(width: width, height: height)
     }
 
@@ -52,13 +80,41 @@ extension MainViewModel {
     }
 
     func didSelectItem(at indexPath: IndexPath, in place: ButtonPlace) {
-        
+        guard let button = button(at: indexPath, in: place) else { return }
+        model.didReceive(action: button.action)
     }
 }
 
 private extension MainViewModel {
     func filteredButtons(in place: ButtonPlace) -> [Button] {
-        buttons.filter { $0.place == place }
+        buttons.filter { $0.isEnabled && $0.place == place }
+    }
+
+    func button(at indexPath: IndexPath, in place: ButtonPlace) -> Button? {
+        let filteredButtons = filteredButtons(in: place)
+        guard 0 ..< filteredButtons.count ~= indexPath.item else { return nil }
+        return filteredButtons[indexPath.item]
+    }
+
+    func updateButtonsIfNeeded() {
+        for button in buttons {
+            guard button.isEnabled != isFeatureEnabled(name: button.title) else { continue }
+
+            buttons = buttons.reduce(into: []) { result, button in
+                let isEnabled = isFeatureEnabled(name: button.title)
+                let action = button.action.copy(isEnabled: isEnabled)
+                let button = Button(place: button.place, action: action)
+
+                result.append(button)
+            }
+            _didUpdate.send(())
+
+            break
+        }
+    }
+
+    func isFeatureEnabled(name: String) -> Bool {
+        provider.model(with: name)?.isEnabled ?? false
     }
 }
 

@@ -10,8 +10,9 @@ import Foundation
 struct Button {
     let place: ButtonPlace
     let action: Action
-    let isEnabled: Bool
-    let isVisible: Bool
 
-    var title: String { action.title }
+    var isEnabled: Bool { action.isEnabled }
+    var title: String { action.name }
 }
+
+extension Button: Equatable {}

@@ -29,7 +29,6 @@
 		265FA06D26A4DDD8005E585F /* MainModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 265FA06C26A4DDD8005E585F /* MainModel.swift */; };
 		265FA06F26A4E07A005E585F /* ButtonPlace.swift in Sources */ = {isa = PBXBuildFile; fileRef = 265FA06E26A4E07A005E585F /* ButtonPlace.swift */; };
 		265FA07326A4E198005E585F /* Action.swift in Sources */ = {isa = PBXBuildFile; fileRef = 265FA07226A4E198005E585F /* Action.swift */; };
-		265FA07826A5E2EB005E585F /* Action+Feature.swift in Sources */ = {isa = PBXBuildFile; fileRef = 265FA07726A5E2EB005E585F /* Action+Feature.swift */; };
 		265FA07A26A60F1F005E585F /* Behavior.swift in Sources */ = {isa = PBXBuildFile; fileRef = 265FA07926A60F1E005E585F /* Behavior.swift */; };
 		26B3DAD426A9E61D0058639F /* DataSource.swift in Sources */ = {isa = PBXBuildFile; fileRef = 26B3DAD326A9E61D0058639F /* DataSource.swift */; };
 		26B3DAD626A9EA540058639F /* AnyDataSource.swift in Sources */ = {isa = PBXBuildFile; fileRef = 26B3DAD526A9EA540058639F /* AnyDataSource.swift */; };
@@ -88,7 +87,6 @@
 		265FA06C26A4DDD8005E585F /* MainModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MainModel.swift; sourceTree = "<group>"; };
 		265FA06E26A4E07A005E585F /* ButtonPlace.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ButtonPlace.swift; sourceTree = "<group>"; };
 		265FA07226A4E198005E585F /* Action.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Action.swift; sourceTree = "<group>"; };
-		265FA07726A5E2EB005E585F /* Action+Feature.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Action+Feature.swift"; sourceTree = "<group>"; };
 		265FA07926A60F1E005E585F /* Behavior.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Behavior.swift; sourceTree = "<group>"; };
 		26B3DAD326A9E61D0058639F /* DataSource.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DataSource.swift; sourceTree = "<group>"; };
 		26B3DAD526A9EA540058639F /* AnyDataSource.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AnyDataSource.swift; sourceTree = "<group>"; };
@@ -223,7 +221,6 @@
 			isa = PBXGroup;
 			children = (
 				265FA07226A4E198005E585F /* Action.swift */,
-				265FA07726A5E2EB005E585F /* Action+Feature.swift */,
 				265FA07926A60F1E005E585F /* Behavior.swift */,
 				26B3DAE326A9F9A30058639F /* Bitcoin.swift */,
 				26B3DAE126A9F8CA0058639F /* BitcoinAPI.swift */,
@@ -451,7 +448,6 @@
 				26B3DAEA26A9FBAC0058639F /* Parser.swift in Sources */,
 				26B3DAD826A9EA630058639F /* ConstantDataSource.swift in Sources */,
 				265FA00826A0979D005E585F /* MainViewModel.swift in Sources */,
-				265FA07826A5E2EB005E585F /* Action+Feature.swift in Sources */,
 				265FA06B26A4C597005E585F /* Button.swift in Sources */,
 				26B3DADC26A9EC400058639F /* UnaryOperationDataSource.swift in Sources */,
 				265FA06F26A4E07A005E585F /* ButtonPlace.swift in Sources */,

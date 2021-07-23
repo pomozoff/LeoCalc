@@ -5,6 +5,7 @@
 //  Created by Anton Pomozov on 15.07.2021.
 //
 
+import Combine
 import UIKit
 import ViewModelKit
 
@@ -69,16 +70,26 @@ class MainViewController: UIViewController {
 
         return view
     }()
+
+    private var totalCancellable = AnyCancellable {}
+    private var didUpdateCancellable = AnyCancellable {}
 }
 
 // MARK: - ViewModelConfigurable
 
 extension MainViewController: ViewModelOwnable {
     func configure(with viewModel: MainViewModel) {
-        viewModel.updateResult = { [unowned self] result in
-            mainView.resultText = String(result)
-        }
         self.viewModel = viewModel
+
+        totalCancellable = viewModel.total
+            .sink { [unowned self] in
+                mainView.resultText = String(describing: $0)
+            }
+
+        didUpdateCancellable = viewModel.didUpdate
+            .sink { [unowned self] in
+                invalidateLayouts()
+            }
 
         mainView.topButtonsCollection.reloadData()
     }

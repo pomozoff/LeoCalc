@@ -167,7 +167,7 @@ private extension MainView {
 
 private enum Constants {
     static let viewPadding: CGFloat = 8.0
-    static let resultFontSize: CGFloat = 64.0
+    static let resultFontSize: CGFloat = 48.0
     static let cornerRadius: CGFloat = 4.0
     static let buttonFontSize: CGFloat = 32.0
     static let buttonHeight: CGFloat = 64.0
