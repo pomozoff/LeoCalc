@@ -331,7 +331,7 @@ class MainModelTests: XCTestCase {
         XCTAssert(model._total == Decimal(5), "Invalid result, should be 5")
     }
 
-    func testFivePlusPointTwoEquaEqual() throws {
+    func testFivePlusPointTwoEqua() throws {
         model.didReceive(action: Action(type: .five))
         model.didReceive(action: Action(type: .plus))
         model.didReceive(action: Action(type: .point))
@@ -339,6 +339,37 @@ class MainModelTests: XCTestCase {
         model.didReceive(action: Action(type: .equal))
 
         XCTAssert(model._total == Decimal(5.2), "Invalid result, should be 5.2")
+    }
+
+    func testOneMinusFiveEqual() throws {
+        model.didReceive(action: Action(type: .one))
+        model.didReceive(action: Action(type: .minus))
+        model.didReceive(action: Action(type: .five))
+        model.didReceive(action: Action(type: .equal))
+
+        XCTAssert(model._total == Decimal(-4), "Invalid result, should be -4")
+    }
+
+    func testOneMinusFiveMultTwoEqual() throws {
+        model.didReceive(action: Action(type: .one))
+        model.didReceive(action: Action(type: .minus))
+        model.didReceive(action: Action(type: .five))
+        model.didReceive(action: Action(type: .multiplication))
+        model.didReceive(action: Action(type: .two))
+        model.didReceive(action: Action(type: .equal))
+
+        XCTAssert(model._total == Decimal(-9), "Invalid result, should be -9")
+    }
+
+    func testOneMinusFivePlusTwoEqual() throws {
+        model.didReceive(action: Action(type: .one))
+        model.didReceive(action: Action(type: .minus))
+        model.didReceive(action: Action(type: .five))
+        model.didReceive(action: Action(type: .plus))
+        model.didReceive(action: Action(type: .two))
+        model.didReceive(action: Action(type: .equal))
+
+        XCTAssert(model._total == Decimal(-2), "Invalid result, should be -2")
     }
 
     func testOneBitcoin() throws {

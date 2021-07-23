@@ -76,8 +76,6 @@ extension MainModel: Calculable {
             _isCleaned = true
             _total = 0
             pointPosition = -1
-        } else {
-            _isCleaned = false
         }
 
         if action.isOperator && !inputStack.isEmpty {
@@ -103,6 +101,8 @@ private extension MainModel {
     }
 
     func add(_ action: Action) {
+        _isCleaned = false
+
         guard action.type != .point else {
             guard pointPosition < 0 else { return }
 
@@ -144,7 +144,8 @@ private extension MainModel {
                 return
             }
 
-            guard let lastOperator = inputStack.last(where: \.isOperator),
+            guard let (index, lastOperator) = inputStack.lastEnumerated(where: \.isOperator),
+                  index > 0,
                   action.priority <= lastOperator.priority
             else {
                 inputStack.push(action)
@@ -241,6 +242,11 @@ private extension MainModel {
         while stack.top?.isDigit == true, let action = stack.pop() {
             reversedStack.push(action)
         }
+
+        if stack.count == 1 && stack.top?.type == .minus {
+            stack.pop().map { reversedStack.push($0) }
+        }
+
         while let action = reversedStack.pop() {
             decimalString += action.name
         }
