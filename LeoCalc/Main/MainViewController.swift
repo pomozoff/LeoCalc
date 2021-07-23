@@ -84,7 +84,7 @@ extension MainViewController: ViewModelOwnable {
 
         totalCancellable = viewModel.total
             .sink { [unowned self] in
-                mainView.resultText = String(describing: $0)
+                mainView.resultText = $0
             }
 
         isAwaitingCancellable = viewModel.isAwaiting

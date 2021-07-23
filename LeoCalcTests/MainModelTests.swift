@@ -281,6 +281,66 @@ class MainModelTests: XCTestCase {
         XCTAssert(model._total == Decimal(2.5), "Invalid result, should be 2.5")
     }
 
+    func testFivePlusTwoEqualMinusThreeEqual() throws {
+        model.didReceive(action: Action(type: .five))
+        model.didReceive(action: Action(type: .plus))
+        model.didReceive(action: Action(type: .two))
+        model.didReceive(action: Action(type: .equal))
+        model.didReceive(action: Action(type: .minus))
+        model.didReceive(action: Action(type: .three))
+        model.didReceive(action: Action(type: .equal))
+
+        XCTAssert(model._total == Decimal(4), "Invalid result, should be 4")
+    }
+
+    func testFivePlusPoint() throws {
+        model.didReceive(action: Action(type: .five))
+        model.didReceive(action: Action(type: .plus))
+        model.didReceive(action: Action(type: .point))
+
+        XCTAssert(model._showPoint, "Invalid result, should show point")
+        XCTAssert(model._total == Decimal(0), "Invalid result, should be 0")
+    }
+
+    func testFivePoint() throws {
+        model.didReceive(action: Action(type: .five))
+        model.didReceive(action: Action(type: .point))
+
+        XCTAssert(model._showPoint, "Invalid result, should show point")
+        XCTAssert(model._total == Decimal(5), "Invalid result, should be 5")
+    }
+
+    func testFivePointFiveFiveFive() throws {
+        model.didReceive(action: Action(type: .five))
+        model.didReceive(action: Action(type: .point))
+        model.didReceive(action: Action(type: .five))
+        model.didReceive(action: Action(type: .five))
+        model.didReceive(action: Action(type: .five))
+
+        XCTAssert(model._showPoint == false, "Invalid result, should not show point")
+        XCTAssert(model._total == Decimal(5.555), "Invalid result, should be 5.555")
+    }
+
+    func testFivePlusPointEqual() throws {
+        model.didReceive(action: Action(type: .five))
+        model.didReceive(action: Action(type: .plus))
+        model.didReceive(action: Action(type: .point))
+        model.didReceive(action: Action(type: .equal))
+
+        XCTAssert(model._showPoint == false, "Invalid result, should not show point")
+        XCTAssert(model._total == Decimal(5), "Invalid result, should be 5")
+    }
+
+    func testFivePlusPointTwoEquaEqual() throws {
+        model.didReceive(action: Action(type: .five))
+        model.didReceive(action: Action(type: .plus))
+        model.didReceive(action: Action(type: .point))
+        model.didReceive(action: Action(type: .two))
+        model.didReceive(action: Action(type: .equal))
+
+        XCTAssert(model._total == Decimal(5.2), "Invalid result, should be 5.2")
+    }
+
     func testOneBitcoin() throws {
         let expectation = XCTestExpectation(description: "Fetch feature list")
         bitcoinCancellable = model.total

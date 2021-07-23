@@ -11,6 +11,7 @@ import Foundation
 
 protocol Calculable {
     var total: AnyPublisher<Decimal, Never> { get }
+    var showPoint: AnyPublisher<Bool, Never> { get }
     var isCleaned: AnyPublisher<Bool, Never> { get }
     var isAwaiting: AnyPublisher<Bool, Never> { get }
 
@@ -29,6 +30,9 @@ class MainModel {
     private(set) var _total: Decimal = 0
 
     @Published
+    private(set) var _showPoint = false
+
+    @Published
     private(set) var _isCleaned = true
 
     @Published
@@ -40,11 +44,21 @@ class MainModel {
         formatter.numberStyle = .decimal
         return formatter
     }()
+
+    private var pointPosition = -1 {
+        didSet {
+            _showPoint = pointPosition == 0
+        }
+    }
 }
 
 extension MainModel: Calculable {
     var total: AnyPublisher<Decimal, Never> {
         $_total.eraseToAnyPublisher()
+    }
+
+    var showPoint: AnyPublisher<Bool, Never> {
+        $_showPoint.eraseToAnyPublisher()
     }
 
     var isCleaned: AnyPublisher<Bool, Never> {
@@ -61,6 +75,7 @@ extension MainModel: Calculable {
 
             _isCleaned = true
             _total = 0
+            pointPosition = -1
         } else {
             _isCleaned = false
         }
@@ -81,20 +96,37 @@ private extension MainModel {
         _isCleaned = true
         _isAwaiting = false
 
+        pointPosition = -1
+
         inputStack.removeAll()
         previousAction = nil
     }
 
     func add(_ action: Action) {
-        inputStack.push(action)
+        guard action.type != .point else {
+            guard pointPosition < 0 else { return }
+
+            if previousAction?.isOperator == true {
+                _total = 0
+            }
+
+            pointPosition = 0
+            inputStack.push(action)
+
+            return
+        }
+
         guard let digit = action.digit else {
             assertionFailure("Invalid action")
             return reset()
         }
 
+        pointPosition += pointPosition < 0 ? 0 : 1
+        inputStack.push(action)
+
         if previousAction?.isDigit == true {
-            _total *= 10
-            _total += digit
+            _total *= pointPosition > 0 ? 1 : 10
+            _total += digit / (pointPosition > 0 ? pow(10, pointPosition) : 1)
         } else {
             _total = digit
         }
@@ -104,6 +136,7 @@ private extension MainModel {
         var topAction: Action?
         let currentAction: Action?
 
+        pointPosition = -1
         if action.class == .binaryOperator {
             guard inputStack.top?.isOperator != true else {
                 _ = inputStack.pop()
@@ -143,13 +176,13 @@ private extension MainModel {
             }
         }
 
-        func handleResult(_ result: Decimal) {
-            guard var stack = numberToStack(result) else {
+        func processValue(_ value: Decimal) {
+            guard var stack = numberToStack(value) else {
                 assertionFailure("Failed to put the result to a stack")
                 return reset()
             }
 
-            _total = result
+            _total = value
 
             var reversedStack = stack.reversed()
             while let digit = reversedStack.pop() {
@@ -158,21 +191,29 @@ private extension MainModel {
 
             if action.class == .binaryOperator {
                 run(action)
-            } else if let topAction = topAction {
+            } else if let topAction = topAction, topAction.type != .equal {
                 inputStack.push(topAction)
             }
         }
 
+        func handleResult(_ result: Result<Decimal, Error>) {
+            switch result {
+            case let .success(value):
+                processValue(value)
+            case let .failure(error):
+                print(error)
+            }
+            _isAwaiting = false
+        }
+
         _isAwaiting = true
-        currentAction?.calculate(operands) { [unowned self] result in
-            DispatchQueue.main.async {
-                switch result {
-                case let .success(value):
-                    handleResult(value)
-                case let .failure(error):
-                    print(error)
+        currentAction?.calculate(operands) { result in
+            if Thread.isMainThread {
+                handleResult(result)
+            } else {
+                DispatchQueue.main.async {
+                    handleResult(result)
                 }
-                _isAwaiting = false
             }
         }
     }
@@ -203,6 +244,7 @@ private extension MainModel {
         while let action = reversedStack.pop() {
             decimalString += action.name
         }
+        decimalString = decimalString == "." ? "0" : decimalString
 
         return decimalFormatter.number(from: decimalString)?.decimalValue
     }

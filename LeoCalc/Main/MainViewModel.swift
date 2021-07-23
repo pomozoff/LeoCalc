@@ -11,8 +11,17 @@ import ViewModelKit
 import UIKit
 
 class MainViewModel {
-    var total: AnyPublisher<Decimal, Never> {
-        model.total.eraseToAnyPublisher()
+    var total: AnyPublisher<String, Never> {
+        model.total
+            .map(String.init)
+            .combineLatest(model.showPoint) {
+                $1 ? "\($0)." : $0
+            }
+            .eraseToAnyPublisher()
+    }
+
+    var showPoint: AnyPublisher<Bool, Never> {
+        model.showPoint.eraseToAnyPublisher()
     }
 
     var isAwaiting: AnyPublisher<Bool, Never> {
@@ -40,6 +49,8 @@ class MainViewModel {
     private let model: MainModel
 
     private let _didUpdate = PassthroughSubject<Void, Never>()
+
+    private var showPointCancellable = AnyCancellable {}
     private var isCleanedCancellable = AnyCancellable {}
 }
 
