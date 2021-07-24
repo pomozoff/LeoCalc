@@ -35,7 +35,7 @@ class MainViewModel {
     init(
         provider: FeaturesProvider,
         buttons: [Button],
-        model: MainModel
+        model: Calculable
     ) {
         self.provider = provider
         self.buttons = buttons
@@ -46,7 +46,7 @@ class MainViewModel {
 
     private let provider: FeaturesProvider
     private var buttons: [Button]
-    private let model: MainModel
+    private let model: Calculable
 
     private let _didUpdate = PassthroughSubject<Void, Never>()
 

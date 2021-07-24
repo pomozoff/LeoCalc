@@ -19,13 +19,6 @@ protocol Calculable {
 }
 
 class MainModel {
-    init() {
-        reset()
-    }
-
-    private var inputStack = Stack<Action>()
-    private var previousAction: Action?
-
     @Published
     private(set) var _total: Decimal = 0
 
@@ -44,6 +37,9 @@ class MainModel {
         formatter.numberStyle = .decimal
         return formatter
     }()
+
+    private var inputStack = Stack<Action>()
+    private var previousAction: Action?
 
     private var pointPosition = -1 {
         didSet {
