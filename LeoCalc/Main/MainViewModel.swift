@@ -29,7 +29,7 @@ class MainViewModel {
             .combineLatest(providerLoading) {
                 $0 || $1
             }
-            .throttle(for: 0.5, scheduler: DispatchQueue.main, latest: true)
+            .throttle(for: 0.1, scheduler: DispatchQueue.main, latest: true)
             .removeDuplicates()
             .eraseToAnyPublisher()
     }

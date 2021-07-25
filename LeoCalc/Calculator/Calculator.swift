@@ -190,6 +190,8 @@ private extension Calculator {
         }
 
         func handleResult(_ result: Result<Decimal, Error>) {
+            _isAwaiting = false
+
             switch result {
             case let .success(value):
                 processValue(value)
@@ -198,9 +200,7 @@ private extension Calculator {
             }
         }
 
-        defer { _isAwaiting = false }
         _isAwaiting = true
-
         currentAction?.calculate(operands) { result in
             if Thread.isMainThread {
                 handleResult(result)
