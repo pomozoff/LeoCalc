@@ -14,7 +14,7 @@ enum UserErrorCode: Int, BaseErrorCode {
 
     var localizedDescription: String {
         switch self {
-        case .`internal`: return "Internal error"
+        case .internal: return "Internal error"
         case .external: return "External error"
         }
     }
@@ -29,6 +29,6 @@ class UserError: BaseError<UserErrorCode> {
 
 extension UserError {
     var message: String {
-        "\(localizedFailureReason.map { "\($0)\n\n" } ?? "")\(erroCodePrefix)\(shortErrorIdentifier)"
+        "\(localizedFailureReason.map { "\($0)\n" } ?? "")\n\(erroCodePrefix)\(shortErrorIdentifier)"
     }
 }

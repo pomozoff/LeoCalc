@@ -194,7 +194,7 @@ private extension Calculator {
             case let .success(value):
                 processValue(value)
             case let .failure(error):
-                print(error)
+                _calcError.send(CalcError(code: .internal, underlying: error))
             }
             _isAwaiting = false
         }

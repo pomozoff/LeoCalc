@@ -77,13 +77,15 @@ extension MainViewModel {
         provider.fetch { [weak self] result in
             guard let self = self else { return }
 
-            switch result {
-            case .success():
-                self.updateButtonsIfNeeded()
-            case let .failure(error):
-                self.providerError.send(error)
+            DispatchQueue.main.async {
+                switch result {
+                case .success():
+                    self.updateButtonsIfNeeded()
+                case let .failure(error):
+                    self.providerError.send(error)
+                }
+                self.providerLoading.send(false)
             }
-            self.providerLoading.send(false)
         }
     }
 

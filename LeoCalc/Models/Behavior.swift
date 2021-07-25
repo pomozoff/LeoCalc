@@ -86,7 +86,7 @@ extension Behavior {
     static let bitcoin = Behavior(
         kind: .bitcoin,
         dataSource: BitcoinDataSource(
-            bitcoinProvider: Provider<BitcoinAPI>(),
+            bitcoinProvider: Provider<BitcoinAPI>(urlSession: Constants.urlSession),
             parsable: DefaultParser(),
             currencyCode: "USD"
         ).anyDataSource
@@ -150,4 +150,13 @@ private extension Double {
 
 private enum Constants {
     static let maxRoundedPlaces = 10
+    static let urlSession: URLSession = {
+        URLSession(
+            configuration: {
+                let session = URLSessionConfiguration.default
+                session.timeoutIntervalForRequest = 10.0
+                return session
+            }()
+        )
+    }()
 }
