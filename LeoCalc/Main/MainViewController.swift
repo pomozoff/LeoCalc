@@ -173,13 +173,18 @@ extension MainViewController: UICollectionViewDataSource {
 
 extension MainViewController: UICollectionViewDelegate {
     func collectionView(_ collectionView: UICollectionView, didSelectItemAt indexPath: IndexPath) {
+        var cell: UICollectionViewCell?
         if collectionView === mainView.topButtonsCollection {
             viewModel?.didSelectItem(at: indexPath, in: .top)
+            cell = collectionView.cellForItem(at: indexPath)
         } else if collectionView === mainView.staticButtonsCollection {
             viewModel?.didSelectItem(at: indexPath, in: .static)
+            cell = collectionView.cellForItem(at: indexPath)
         } else if collectionView === mainView.sideButtonsCollection {
             viewModel?.didSelectItem(at: indexPath, in: .side)
+            cell = collectionView.cellForItem(at: indexPath)
         }
+        cell.map(animateTapping)
     }
 }
 
@@ -225,8 +230,25 @@ private extension MainViewController {
 
         return label
     }
+
+    func animateTapping(on cell: UICollectionViewCell) {
+        UIView.animateKeyframes(
+            withDuration: Constants.animationDuration,
+            delay: 0.0,
+            options: .calculationModeCubic,
+            animations: {
+                UIView.addKeyframe(withRelativeStartTime: 0.0, relativeDuration: 0.5) {
+                    cell.contentView.alpha = 0.0
+                }
+                UIView.addKeyframe(withRelativeStartTime: 0.5, relativeDuration: 0.5) {
+                    cell.contentView.alpha = 1.0
+                }
+            }
+        )
+    }
 }
 
 private enum Constants {
     static let buttonFontSize: CGFloat = 32.0
+    static let animationDuration: TimeInterval = 0.25
 }
