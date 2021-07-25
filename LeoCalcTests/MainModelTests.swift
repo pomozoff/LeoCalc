@@ -373,6 +373,16 @@ class MainModelTests: XCTestCase {
         XCTAssert(model._total == Decimal(-2), "Invalid result, should be -2")
     }
 
+    func testTwoMultEqualThreeEqual() throws {
+        model.didReceive(action: Action(type: .two))
+        model.didReceive(action: Action(type: .multiplication))
+        model.didReceive(action: Action(type: .equal))
+        model.didReceive(action: Action(type: .three))
+        model.didReceive(action: Action(type: .equal))
+
+        XCTAssert(model._total == Decimal(6), "Invalid result, should be 6")
+    }
+
     func testOneDivideZeroEqual() throws {
         let expectation = XCTestExpectation(description: "NaN error")
         errorCancellable = model.calcError

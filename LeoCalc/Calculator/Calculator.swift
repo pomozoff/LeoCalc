@@ -77,7 +77,9 @@ extension Calculator: Calculable {
             add(action)
         }
 
-        previousAction = action
+        if action.type != .equal {
+            previousAction = action
+        }
     }
 }
 
@@ -132,8 +134,10 @@ private extension Calculator {
         pointPosition = -1
         if action.class == .binaryOperator {
             guard inputStack.top?.isOperator != true else {
-                _ = inputStack.pop()
-                inputStack.push(action)
+                if action.type != .equal {
+                    _ = inputStack.pop()
+                    inputStack.push(action)
+                }
                 return
             }
 
@@ -141,7 +145,9 @@ private extension Calculator {
                   index > 0,
                   action.priority <= lastOperator.priority
             else {
-                inputStack.push(action)
+                if action.type != .equal {
+                    inputStack.push(action)
+                }
                 return
             }
             currentAction = lastOperator
