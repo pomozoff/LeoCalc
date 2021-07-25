@@ -190,13 +190,14 @@ private extension Calculator {
         }
 
         func handleResult(_ result: Result<Decimal, Error>) {
+            _isAwaiting = false
+
             switch result {
             case let .success(value):
                 processValue(value)
             case let .failure(error):
                 _calcError.send(CalcError(code: .internal, underlying: error))
             }
-            _isAwaiting = false
         }
 
         _isAwaiting = true
