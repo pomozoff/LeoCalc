@@ -100,13 +100,15 @@ extension MainViewModel {
     }
 
     func buttonSize(at indexPath: IndexPath, in place: ButtonPlace, screenWidth: CGFloat) -> CGSize {
-        let height = screenWidth / CGFloat(Constants.numberOfColumns)
+        let height = (screenWidth - CGFloat(Constants.numberOfColumns - 1)) / CGFloat(Constants.numberOfColumns)
         let width: CGFloat
+
         if place == .static, let button = button(at: indexPath, in: place) {
-            width = (button.action.type == .zero) ? height * 2 : height
+            width = (button.action.type == .zero) ? height * 2 + 1.0 : height
         } else {
             width = height
         }
+
         return CGSize(width: width, height: height)
     }
 
@@ -158,9 +160,9 @@ private extension MainViewModel {
             buttons = buttons.reduce(into: []) { result, button in
                 let isEnabled = isFeatureEnabled(name: button.title)
                 let action = button.action.copy(isEnabled: isEnabled)
-                let button = Button(place: button.place, action: action)
+                let newButton = Button(place: button.place, action: action)
 
-                result.append(button)
+                result.append(newButton)
             }
             _didUpdate.send(())
 

@@ -74,6 +74,7 @@ class MainView: UIView {
     private let verticalButtonsContainer: UIStackView = {
         let stack = UIStackView()
         stack.axis = .vertical
+        stack.spacing = 1.0
 
         // TODO: Check the corner radius is applied
         stack.layer.cornerRadius = Constants.cornerRadius
@@ -92,7 +93,11 @@ class MainView: UIView {
         return collection
     }()
 
-    private let horizontalButtonsContainer = UIStackView()
+    private var horizontalButtonsContainer: UIStackView = {
+        let stack = UIStackView()
+        stack.spacing = 1.0
+        return stack
+    }()
 
     private(set) lazy var staticButtonsCollection: UICollectionView = {
         let collection = UICollectionView(frame: .zero, collectionViewLayout: staticCollectionLayout)
@@ -146,7 +151,7 @@ private extension MainView {
         NSLayoutConstraint.activate([
             horizontalButtonsContainer.leadingAnchor.constraint(equalTo: resultLabel.leadingAnchor),
             horizontalButtonsContainer.trailingAnchor.constraint(equalTo: resultLabel.trailingAnchor),
-            horizontalButtonsContainer.topAnchor.constraint(equalTo: resultLabel.bottomAnchor),
+            horizontalButtonsContainer.topAnchor.constraint(equalTo: resultLabel.bottomAnchor, constant: 1.0),
             horizontalButtonsContainer.bottomAnchor.constraint(equalTo: safeAreaLayoutGuide.bottomAnchor),
         ])
 

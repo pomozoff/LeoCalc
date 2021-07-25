@@ -30,24 +30,24 @@ class MainViewController: UIViewController {
 
     let topCollectionLayout: SingleLineButtonsCollectionLayout = {
         let layout = SingleLineButtonsCollectionLayout()
-        layout.minimumInteritemSpacing = 0.0
-        layout.minimumLineSpacing = 0.0
+        layout.minimumInteritemSpacing = 1.0
+        layout.minimumLineSpacing = 1.0
 
         return layout
     }()
 
     let staticCollectionLayout: StaticButtonsCollectionLayout = {
         let layout = StaticButtonsCollectionLayout()
-        layout.minimumInteritemSpacing = 0.0
-        layout.minimumLineSpacing = 0.0
+        layout.minimumInteritemSpacing = 1.0
+        layout.minimumLineSpacing = 1.0
 
         return layout
     }()
 
     let sideCollectionLayout: SingleLineButtonsCollectionLayout = {
         let layout = SingleLineButtonsCollectionLayout()
-        layout.minimumInteritemSpacing = 0.0
-        layout.minimumLineSpacing = 0.0
+        layout.minimumInteritemSpacing = 1.0
+        layout.minimumLineSpacing = 1.0
 
         return layout
     }()
@@ -219,7 +219,7 @@ private extension MainViewController {
     func createCellTitleLabel(with text: String?) -> UILabel {
         let label = UILabel()
         label.font = .systemFont(ofSize: Constants.buttonFontSize)
-        label.backgroundColor = .systemGray5
+        label.backgroundColor = .systemGray6
         label.textAlignment = .center
         label.text = text
 
