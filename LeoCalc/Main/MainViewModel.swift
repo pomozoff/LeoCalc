@@ -26,9 +26,8 @@ class MainViewModel {
 
     var isAwaiting: AnyPublisher<Bool, Never> {
         model.isAwaiting
-            .print()
             .combineLatest(providerLoading) {
-                $0 && $1
+                $0 || $1
             }
             .eraseToAnyPublisher()
     }
@@ -61,7 +60,7 @@ class MainViewModel {
     private let model: Calculable
 
     private let _didUpdate = PassthroughSubject<Void, Never>()
-    private let providerLoading = PassthroughSubject<Bool, Never>()
+    private let providerLoading = CurrentValueSubject<Bool, Never>(false)
     private let providerError = PassthroughSubject<ProviderError, Never>()
 
     private var showPointCancellable = AnyCancellable {}

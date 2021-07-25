@@ -130,7 +130,7 @@ class MainView: UIView {
 
     private let dimmedView: UIView = {
         let view = UIView()
-        view.backgroundColor = .systemGray5.withAlphaComponent(0.2)
+        view.backgroundColor = .systemGray3.withAlphaComponent(0.7)
         view.alpha = 0.0
         view.isHidden = true
 
