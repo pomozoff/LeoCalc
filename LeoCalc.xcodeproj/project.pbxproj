@@ -38,7 +38,6 @@
 		26B3DAE026A9F4570058639F /* BitcoinDataSource.swift in Sources */ = {isa = PBXBuildFile; fileRef = 26B3DADF26A9F4570058639F /* BitcoinDataSource.swift */; };
 		26B3DAE226A9F8CA0058639F /* BitcoinAPI.swift in Sources */ = {isa = PBXBuildFile; fileRef = 26B3DAE126A9F8CA0058639F /* BitcoinAPI.swift */; };
 		26B3DAE426A9F9A30058639F /* Bitcoin.swift in Sources */ = {isa = PBXBuildFile; fileRef = 26B3DAE326A9F9A30058639F /* Bitcoin.swift */; };
-		26B3DAEA26A9FBAC0058639F /* Parser.swift in Sources */ = {isa = PBXBuildFile; fileRef = 26B3DAE926A9FBAC0058639F /* Parser.swift */; };
 		26B3DAEC26AA00900058639F /* Currency.swift in Sources */ = {isa = PBXBuildFile; fileRef = 26B3DAEB26AA00900058639F /* Currency.swift */; };
 		26B3DAEF26AA08BE0058639F /* URLProtocolMock.swift in Sources */ = {isa = PBXBuildFile; fileRef = 26B3DAEE26AA08BE0058639F /* URLProtocolMock.swift */; };
 		26B3DAF226AA09D40058639F /* bitcoin.json in Resources */ = {isa = PBXBuildFile; fileRef = 26B3DAF126AA09D40058639F /* bitcoin.json */; };
@@ -100,7 +99,6 @@
 		26B3DADF26A9F4570058639F /* BitcoinDataSource.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BitcoinDataSource.swift; sourceTree = "<group>"; };
 		26B3DAE126A9F8CA0058639F /* BitcoinAPI.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BitcoinAPI.swift; sourceTree = "<group>"; };
 		26B3DAE326A9F9A30058639F /* Bitcoin.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Bitcoin.swift; sourceTree = "<group>"; };
-		26B3DAE926A9FBAC0058639F /* Parser.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Parser.swift; sourceTree = "<group>"; };
 		26B3DAEB26AA00900058639F /* Currency.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Currency.swift; sourceTree = "<group>"; };
 		26B3DAEE26AA08BE0058639F /* URLProtocolMock.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = URLProtocolMock.swift; sourceTree = "<group>"; };
 		26B3DAF126AA09D40058639F /* bitcoin.json */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.json; path = bitcoin.json; sourceTree = "<group>"; };
@@ -167,7 +165,6 @@
 				265FA05726A2ED31005E585F /* Models */,
 				265FA00626A095F7005E585F /* Main */,
 				26B3DAD226A9E6090058639F /* DataSources */,
-				26B3DAE826A9FB9B0058639F /* Utils */,
 				265FA00526A08F7F005E585F /* Application */,
 				265FA00426A08F70005E585F /* Resources */,
 				265F9FE226A08F06005E585F /* Info.plist */,
@@ -270,14 +267,6 @@
 				26B3DADB26A9EC400058639F /* UnaryOperationDataSource.swift */,
 			);
 			path = DataSources;
-			sourceTree = "<group>";
-		};
-		26B3DAE826A9FB9B0058639F /* Utils */ = {
-			isa = PBXGroup;
-			children = (
-				26B3DAE926A9FBAC0058639F /* Parser.swift */,
-			);
-			path = Utils;
 			sourceTree = "<group>";
 		};
 		26B3DAED26AA08B60058639F /* Mocks */ = {
@@ -467,7 +456,6 @@
 				26B3DAD426A9E61D0058639F /* DataSource.swift in Sources */,
 				265FA06D26A4DDD8005E585F /* Calculator.swift in Sources */,
 				26B3DB1026ACC85D0058639F /* UserError.swift in Sources */,
-				26B3DAEA26A9FBAC0058639F /* Parser.swift in Sources */,
 				26B3DAD826A9EA630058639F /* ConstantDataSource.swift in Sources */,
 				26B3DB1226AD62EA0058639F /* ErrorPresentable.swift in Sources */,
 				265FA00826A0979D005E585F /* MainViewModel.swift in Sources */,

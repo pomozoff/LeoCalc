@@ -87,7 +87,7 @@ extension Behavior {
         kind: .bitcoin,
         dataSource: BitcoinDataSource(
             bitcoinProvider: Provider<BitcoinAPI>(),
-            parsable: Parser(),
+            parsable: DefaultParser(),
             currencyCode: "USD"
         ).anyDataSource
     )

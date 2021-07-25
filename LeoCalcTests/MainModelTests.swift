@@ -404,7 +404,7 @@ class MainModelTests: XCTestCase {
             kind: .bitcoin,
             dataSource: BitcoinDataSource(
                 bitcoinProvider: Provider<BitcoinAPI>(urlSession: Constants.bitcoinSession),
-                parsable: Parser(),
+                parsable: DefaultParser(),
                 currencyCode: "USD"
             ).anyDataSource
         )
