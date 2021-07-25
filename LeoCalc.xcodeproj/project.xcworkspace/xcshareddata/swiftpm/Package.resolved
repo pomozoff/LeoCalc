@@ -6,7 +6,7 @@
         "repositoryURL": "https://github.com/pomozoff/CommonKit.git",
         "state": {
           "branch": "main",
-          "revision": "aba53f6ce981cd0aa9e8c3614d71665e533d26eb",
+          "revision": "0cdc481f9131edda71aba27b404af98d2600ad43",
           "version": null
         }
       },
@@ -15,7 +15,7 @@
         "repositoryURL": "https://github.com/pomozoff/FeatureToggleKit.git",
         "state": {
           "branch": "main",
-          "revision": "ff1496302d253691e2cf38ace086ba9313115805",
+          "revision": "3ce911dbd28353e5ad9a90aa1edd91ae0c1d5de0",
           "version": null
         }
       },
@@ -24,7 +24,7 @@
         "repositoryURL": "https://github.com/pomozoff/NetworkKit.git",
         "state": {
           "branch": "main",
-          "revision": "7498d4ad1a36cb8840e875663907f637279413e0",
+          "revision": "faf822d8c316ed54fa1b60a150fe20840f0d8986",
           "version": null
         }
       },

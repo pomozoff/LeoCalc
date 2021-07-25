@@ -26,7 +26,7 @@
 		265FA06426A3454A005E585F /* StaticButtonsCollectionLayout.swift in Sources */ = {isa = PBXBuildFile; fileRef = 265FA06326A3454A005E585F /* StaticButtonsCollectionLayout.swift */; };
 		265FA06926A357D1005E585F /* UICollectionView+Extensions.swift in Sources */ = {isa = PBXBuildFile; fileRef = 265FA06826A357D1005E585F /* UICollectionView+Extensions.swift */; };
 		265FA06B26A4C597005E585F /* Button.swift in Sources */ = {isa = PBXBuildFile; fileRef = 265FA06A26A4C597005E585F /* Button.swift */; };
-		265FA06D26A4DDD8005E585F /* MainModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 265FA06C26A4DDD8005E585F /* MainModel.swift */; };
+		265FA06D26A4DDD8005E585F /* Calculator.swift in Sources */ = {isa = PBXBuildFile; fileRef = 265FA06C26A4DDD8005E585F /* Calculator.swift */; };
 		265FA06F26A4E07A005E585F /* ButtonPlace.swift in Sources */ = {isa = PBXBuildFile; fileRef = 265FA06E26A4E07A005E585F /* ButtonPlace.swift */; };
 		265FA07326A4E198005E585F /* Action.swift in Sources */ = {isa = PBXBuildFile; fileRef = 265FA07226A4E198005E585F /* Action.swift */; };
 		265FA07A26A60F1F005E585F /* Behavior.swift in Sources */ = {isa = PBXBuildFile; fileRef = 265FA07926A60F1E005E585F /* Behavior.swift */; };
@@ -42,6 +42,10 @@
 		26B3DAEC26AA00900058639F /* Currency.swift in Sources */ = {isa = PBXBuildFile; fileRef = 26B3DAEB26AA00900058639F /* Currency.swift */; };
 		26B3DAEF26AA08BE0058639F /* URLProtocolMock.swift in Sources */ = {isa = PBXBuildFile; fileRef = 26B3DAEE26AA08BE0058639F /* URLProtocolMock.swift */; };
 		26B3DAF226AA09D40058639F /* bitcoin.json in Resources */ = {isa = PBXBuildFile; fileRef = 26B3DAF126AA09D40058639F /* bitcoin.json */; };
+		26B3DB0C26ACC6C70058639F /* Calculable.swift in Sources */ = {isa = PBXBuildFile; fileRef = 26B3DB0B26ACC6C70058639F /* Calculable.swift */; };
+		26B3DB0E26ACC7200058639F /* CalcError.swift in Sources */ = {isa = PBXBuildFile; fileRef = 26B3DB0D26ACC7200058639F /* CalcError.swift */; };
+		26B3DB1026ACC85D0058639F /* UserError.swift in Sources */ = {isa = PBXBuildFile; fileRef = 26B3DB0F26ACC85D0058639F /* UserError.swift */; };
+		26B3DB1226AD62EA0058639F /* ErrorPresentable.swift in Sources */ = {isa = PBXBuildFile; fileRef = 26B3DB1126AD62EA0058639F /* ErrorPresentable.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -84,7 +88,7 @@
 		265FA06326A3454A005E585F /* StaticButtonsCollectionLayout.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = StaticButtonsCollectionLayout.swift; sourceTree = "<group>"; };
 		265FA06826A357D1005E585F /* UICollectionView+Extensions.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UICollectionView+Extensions.swift"; sourceTree = "<group>"; };
 		265FA06A26A4C597005E585F /* Button.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Button.swift; sourceTree = "<group>"; };
-		265FA06C26A4DDD8005E585F /* MainModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MainModel.swift; sourceTree = "<group>"; };
+		265FA06C26A4DDD8005E585F /* Calculator.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Calculator.swift; sourceTree = "<group>"; };
 		265FA06E26A4E07A005E585F /* ButtonPlace.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ButtonPlace.swift; sourceTree = "<group>"; };
 		265FA07226A4E198005E585F /* Action.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Action.swift; sourceTree = "<group>"; };
 		265FA07926A60F1E005E585F /* Behavior.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Behavior.swift; sourceTree = "<group>"; };
@@ -100,6 +104,10 @@
 		26B3DAEB26AA00900058639F /* Currency.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Currency.swift; sourceTree = "<group>"; };
 		26B3DAEE26AA08BE0058639F /* URLProtocolMock.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = URLProtocolMock.swift; sourceTree = "<group>"; };
 		26B3DAF126AA09D40058639F /* bitcoin.json */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.json; path = bitcoin.json; sourceTree = "<group>"; };
+		26B3DB0B26ACC6C70058639F /* Calculable.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Calculable.swift; sourceTree = "<group>"; };
+		26B3DB0D26ACC7200058639F /* CalcError.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CalcError.swift; sourceTree = "<group>"; };
+		26B3DB0F26ACC85D0058639F /* UserError.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = UserError.swift; sourceTree = "<group>"; };
+		26B3DB1126AD62EA0058639F /* ErrorPresentable.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ErrorPresentable.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -153,6 +161,7 @@
 		265F9FD326A08F03005E585F /* LeoCalc */ = {
 			isa = PBXGroup;
 			children = (
+				26B3DB0A26ACC6B90058639F /* Calculator */,
 				265FA06726A357BA005E585F /* Extensions */,
 				265FA06026A344CE005E585F /* CollectionLayouts */,
 				265FA05726A2ED31005E585F /* Models */,
@@ -212,7 +221,8 @@
 				265FA00726A0979D005E585F /* MainViewModel.swift */,
 				265F9FD826A08F03005E585F /* MainViewController.swift */,
 				265FA05E26A3243B005E585F /* MainView.swift */,
-				265FA06C26A4DDD8005E585F /* MainModel.swift */,
+				26B3DB0F26ACC85D0058639F /* UserError.swift */,
+				26B3DB1126AD62EA0058639F /* ErrorPresentable.swift */,
 			);
 			path = Main;
 			sourceTree = "<group>";
@@ -284,6 +294,16 @@
 				26B3DAF126AA09D40058639F /* bitcoin.json */,
 			);
 			path = Resources;
+			sourceTree = "<group>";
+		};
+		26B3DB0A26ACC6B90058639F /* Calculator */ = {
+			isa = PBXGroup;
+			children = (
+				26B3DB0B26ACC6C70058639F /* Calculable.swift */,
+				265FA06C26A4DDD8005E585F /* Calculator.swift */,
+				26B3DB0D26ACC7200058639F /* CalcError.swift */,
+			);
+			path = Calculator;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -439,15 +459,19 @@
 				265F9FD526A08F03005E585F /* AppDelegate.swift in Sources */,
 				265FA05D26A30E34005E585F /* MainBuilder.swift in Sources */,
 				265FA05926A2ED3C005E585F /* FeatureModel.swift in Sources */,
+				26B3DB0E26ACC7200058639F /* CalcError.swift in Sources */,
 				265FA06926A357D1005E585F /* UICollectionView+Extensions.swift in Sources */,
 				265F9FD726A08F03005E585F /* SceneDelegate.swift in Sources */,
 				26B3DAD626A9EA540058639F /* AnyDataSource.swift in Sources */,
 				265FA07A26A60F1F005E585F /* Behavior.swift in Sources */,
 				26B3DAD426A9E61D0058639F /* DataSource.swift in Sources */,
-				265FA06D26A4DDD8005E585F /* MainModel.swift in Sources */,
+				265FA06D26A4DDD8005E585F /* Calculator.swift in Sources */,
+				26B3DB1026ACC85D0058639F /* UserError.swift in Sources */,
 				26B3DAEA26A9FBAC0058639F /* Parser.swift in Sources */,
 				26B3DAD826A9EA630058639F /* ConstantDataSource.swift in Sources */,
+				26B3DB1226AD62EA0058639F /* ErrorPresentable.swift in Sources */,
 				265FA00826A0979D005E585F /* MainViewModel.swift in Sources */,
+				26B3DB0C26ACC6C70058639F /* Calculable.swift in Sources */,
 				265FA06B26A4C597005E585F /* Button.swift in Sources */,
 				26B3DADC26A9EC400058639F /* UnaryOperationDataSource.swift in Sources */,
 				265FA06F26A4E07A005E585F /* ButtonPlace.swift in Sources */,

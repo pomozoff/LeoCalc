@@ -24,8 +24,16 @@ class MainView: UIView {
                 options: isActivityIndicatorViewShown ? .curveEaseOut : .curveEaseIn,
                 animations: {
                     self.dimmedView.alpha = self.isActivityIndicatorViewShown ? 1.0 : 0.0
+                    if self.isActivityIndicatorViewShown {
+                        self.dimmedView.isHidden = false
+                    }
                 },
-                completion: nil
+                completion: { isFinished in
+                    guard isFinished else { return }
+                    if !self.isActivityIndicatorViewShown {
+                        self.dimmedView.isHidden = true
+                    }
+                }
             )
         }
     }
@@ -123,6 +131,9 @@ class MainView: UIView {
     private let dimmedView: UIView = {
         let view = UIView()
         view.backgroundColor = .systemGray5.withAlphaComponent(0.2)
+        view.alpha = 0.0
+        view.isHidden = true
+
         return view
     }()
 

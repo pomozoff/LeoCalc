@@ -25,11 +25,23 @@ class MainViewModel {
     }
 
     var isAwaiting: AnyPublisher<Bool, Never> {
-        model.isAwaiting.eraseToAnyPublisher()
+        model.isAwaiting
+            .print()
+            .combineLatest(providerLoading) {
+                $0 && $1
+            }
+            .eraseToAnyPublisher()
     }
 
     var didUpdate: AnyPublisher<Void, Never> {
         _didUpdate.eraseToAnyPublisher()
+    }
+
+    var userError: AnyPublisher<UserError, Never> {
+        model.calcError
+            .map { UserError(code: .internal, localizedFailureReason: $0.localizedFailureReason, underlying: $0) }
+            .merge(with: providerError.map { UserError(code: .external, localizedFailureReason: $0.localizedFailureReason, underlying: $0) })
+            .eraseToAnyPublisher()
     }
 
     init(
@@ -49,6 +61,8 @@ class MainViewModel {
     private let model: Calculable
 
     private let _didUpdate = PassthroughSubject<Void, Never>()
+    private let providerLoading = PassthroughSubject<Bool, Never>()
+    private let providerError = PassthroughSubject<ProviderError, Never>()
 
     private var showPointCancellable = AnyCancellable {}
     private var isCleanedCancellable = AnyCancellable {}
@@ -60,13 +74,17 @@ extension MainViewModel: ViewModel {
 
 extension MainViewModel {
     func fetch() -> Void {
+        providerLoading.send(true)
         provider.fetch { [weak self] result in
+            guard let self = self else { return }
+
             switch result {
             case .success():
-                self?.updateButtonsIfNeeded()
+                self.updateButtonsIfNeeded()
             case let .failure(error):
-                NSLog("Fetching features failed with error: \(error)")
+                self.providerError.send(error)
             }
+            self.providerLoading.send(false)
         }
     }
 

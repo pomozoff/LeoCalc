@@ -1,5 +1,5 @@
 //
-//  MainModel.swift
+//  Calculator.swift
 //  LeoCalc
 //
 //  Created by Anton Pomozov on 19.07.2021.
@@ -9,16 +9,7 @@ import Combine
 import CommonKit
 import Foundation
 
-protocol Calculable {
-    var total: AnyPublisher<Decimal, Never> { get }
-    var showPoint: AnyPublisher<Bool, Never> { get }
-    var isCleaned: AnyPublisher<Bool, Never> { get }
-    var isAwaiting: AnyPublisher<Bool, Never> { get }
-
-    func didReceive(action: Action)
-}
-
-class MainModel {
+class Calculator {
     @Published
     private(set) var _total: Decimal = 0
 
@@ -30,6 +21,8 @@ class MainModel {
 
     @Published
     private(set) var _isAwaiting = false
+
+    private(set) var _calcError = PassthroughSubject<CalcError, Never>()
 
     private let decimalFormatter: NumberFormatter = {
         let formatter = NumberFormatter()
@@ -48,7 +41,7 @@ class MainModel {
     }
 }
 
-extension MainModel: Calculable {
+extension Calculator: Calculable {
     var total: AnyPublisher<Decimal, Never> {
         $_total.eraseToAnyPublisher()
     }
@@ -63,6 +56,10 @@ extension MainModel: Calculable {
 
     var isAwaiting: AnyPublisher<Bool, Never> {
         $_isAwaiting.eraseToAnyPublisher()
+    }
+
+    var calcError: AnyPublisher<CalcError, Never> {
+        _calcError.eraseToAnyPublisher()
     }
 
     func didReceive(action: Action) {
@@ -84,7 +81,7 @@ extension MainModel: Calculable {
     }
 }
 
-private extension MainModel {
+private extension Calculator {
     func reset() {
         _total = 0
         _isCleaned = true
@@ -175,7 +172,6 @@ private extension MainModel {
 
         func processValue(_ value: Decimal) {
             guard var stack = numberToStack(value) else {
-                assertionFailure("Failed to put the result to a stack")
                 return reset()
             }
 
@@ -253,6 +249,11 @@ private extension MainModel {
 
     func numberToStack(_ number: Decimal) -> Stack<Action>? {
         var stack = Stack<Action>()
+
+        guard number != .nan else {
+            _calcError.send(CalcError(code: .nan))
+            return nil
+        }
 
         for char in String(describing: number) {
             guard let action = Action(name: String(char)) else { return nil }

@@ -14,11 +14,12 @@ import XCTest
 
 class MainModelTests: XCTestCase {
     override func setUpWithError() throws {
-        model = MainModel()
+        model = Calculator()
     }
 
     override func tearDownWithError() throws {
-        // Put teardown code here. This method is called after the invocation of each test method in the class.
+        bitcoinCancellable = AnyCancellable {}
+        errorCancellable = AnyCancellable {}
     }
 
     func testPlus() throws {
@@ -372,6 +373,24 @@ class MainModelTests: XCTestCase {
         XCTAssert(model._total == Decimal(-2), "Invalid result, should be -2")
     }
 
+    func testOneDivideZeroEqual() throws {
+        let expectation = XCTestExpectation(description: "NaN error")
+        errorCancellable = model.calcError
+            .sink {
+                XCTAssert($0.errorCode == .nan, "Invalid error, should be NaN")
+                expectation.fulfill()
+            }
+
+        model.didReceive(action: Action(type: .one))
+        model.didReceive(action: Action(type: .division))
+        model.didReceive(action: Action(type: .zero))
+        model.didReceive(action: Action(type: .equal))
+
+        XCTAssert(model._total == Decimal(0), "Invalid result, should be 0")
+
+        wait(for: [expectation], timeout: Constants.defaultTimeout)
+    }
+
     func testOneBitcoin() throws {
         let expectation = XCTestExpectation(description: "Fetch feature list")
         bitcoinCancellable = model.total
@@ -397,8 +416,9 @@ class MainModelTests: XCTestCase {
         wait(for: [expectation], timeout: Constants.defaultTimeout)
     }
 
-    private var model: MainModel!
+    private var model: Calculator!
     private var bitcoinCancellable = AnyCancellable {}
+    private var errorCancellable = AnyCancellable {}
 }
 
 private enum Constants {

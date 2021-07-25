@@ -14,7 +14,7 @@ class MainBuilder {
     static func buildViewModel() -> MainViewModel {
         let jsonSource = JSONSource<FeatureModel>(fileUrl: Bundle.main.url(forResource: "featuresList", withExtension: "json")!)
         let provider = FeaturesProvider(sources: [jsonSource.anySource])
-        let model = MainModel()
+        let model = Calculator()
 
         let viewModel = MainViewModel(
             provider: provider,

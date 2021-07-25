@@ -74,6 +74,7 @@ class MainViewController: UIViewController {
     private var totalCancellable = AnyCancellable {}
     private var isAwaitingCancellable = AnyCancellable {}
     private var didUpdateCancellable = AnyCancellable {}
+    private var errorCancellable = AnyCancellable {}
 }
 
 // MARK: - ViewModelConfigurable
@@ -98,7 +99,30 @@ extension MainViewController: ViewModelOwnable {
                 reloadButtons()
             }
 
+        errorCancellable = viewModel.userError
+            .sink { [unowned self] error in
+                presentAlert(title: error.localizedDescription, message: error.message)
+            }
+
         reloadButtons()
+    }
+}
+
+// MARK: - ErrorPresentable
+
+extension MainViewController: ErrorPresentable {
+    func presentAlert(title: String, message: String) {
+        let controller = UIAlertController(
+            title: title,
+            message: message,
+            preferredStyle: .alert
+        )
+        controller.addAction(UIAlertAction(
+            title: NSLocalizedString("OK", comment: "The title of a button"),
+            style: .cancel,
+            handler: nil
+        ))
+        present(controller, animated: true, completion: nil)
     }
 }
 
