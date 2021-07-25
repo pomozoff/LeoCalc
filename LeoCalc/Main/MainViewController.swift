@@ -83,15 +83,8 @@ extension MainViewController: ViewModelOwnable {
     func configure(with viewModel: MainViewModel) {
         self.viewModel = viewModel
 
-        totalCancellable = viewModel.total
-            .sink { [unowned self] in
-                mainView.resultText = $0
-            }
-
-        isAwaitingCancellable = viewModel.isAwaiting
-            .sink { [unowned self] in
-                mainView.isActivityIndicatorViewShown = $0
-            }
+        viewModel.total.assign(to: &mainView.$total)
+        viewModel.isAwaiting.assign(to: &mainView.$isActivityIndicatorViewShown)
 
         didUpdateCancellable = viewModel.didUpdate
             .sink { [unowned self] in

@@ -5,38 +5,21 @@
 //  Created by Anton Pomozov on 17.07.2021.
 //
 
+import Combine
 import UIKit
 
 class MainView: UIView {
+    @Published
+    var total = ""
+
     var buttonHeight: CGFloat = 0.0 {
         didSet {
             updateCollectionsSize(with: buttonHeight)
         }
     }
 
-    var isActivityIndicatorViewShown = false {
-        didSet {
-            isActivityIndicatorViewShown ? activityIndicatorView.startAnimating() : activityIndicatorView.stopAnimating()
-
-            UIView.animate(
-                withDuration: Constants.animationDuration,
-                delay: 0.0,
-                options: isActivityIndicatorViewShown ? .curveEaseOut : .curveEaseIn,
-                animations: {
-                    self.dimmedView.alpha = self.isActivityIndicatorViewShown ? 1.0 : 0.0
-                    if self.isActivityIndicatorViewShown {
-                        self.dimmedView.isHidden = false
-                    }
-                },
-                completion: { isFinished in
-                    guard isFinished else { return }
-                    if !self.isActivityIndicatorViewShown {
-                        self.dimmedView.isHidden = true
-                    }
-                }
-            )
-        }
-    }
+    @Published
+    var isActivityIndicatorViewShown = false
 
     init(
         topCollectionLayout: UICollectionViewLayout,
@@ -51,6 +34,7 @@ class MainView: UIView {
 
         setupView()
         setupConstraints()
+        setupBindings()
     }
 
     required init?(coder: NSCoder) {
@@ -138,13 +122,9 @@ class MainView: UIView {
     }()
 
     private let activityIndicatorView = UIActivityIndicatorView(style: .large)
-}
 
-extension MainView {
-    var resultText: String? {
-        get { resultLabel.text }
-        set { resultLabel.text = newValue }
-    }
+    private var resultCancellable = AnyCancellable {}
+    private var isAwaitingCancellable = AnyCancellable {}
 }
 
 private extension MainView {
@@ -191,6 +171,36 @@ private extension MainView {
             activityIndicatorView.centerXAnchor.constraint(equalTo: dimmedView.centerXAnchor),
             activityIndicatorView.centerYAnchor.constraint(equalTo: dimmedView.centerYAnchor),
         ])
+    }
+
+    func setupBindings() {
+        resultCancellable = $total
+            .sink { [unowned self] in
+                resultLabel.text = $0
+            }
+
+        isAwaitingCancellable = $isActivityIndicatorViewShown
+            .sink { [unowned self] isShown in
+                isShown ? activityIndicatorView.startAnimating() : activityIndicatorView.stopAnimating()
+
+                UIView.animate(
+                    withDuration: Constants.animationDuration,
+                    delay: 0.0,
+                    options: isShown ? .curveEaseOut : .curveEaseIn,
+                    animations: {
+                        self.dimmedView.alpha = isShown ? 1.0 : 0.0
+                        if isShown {
+                            self.dimmedView.isHidden = false
+                        }
+                    },
+                    completion: { isFinished in
+                        guard isFinished else { return }
+                        if !isShown {
+                            self.dimmedView.isHidden = true
+                        }
+                    }
+                )
+        }
     }
 
     func updateCollectionsSize(with buttonHeight: CGFloat) {
